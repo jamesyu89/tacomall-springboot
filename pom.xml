@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.tacomall</groupId>
+    <artifactId>tacomall-springboot</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>tacomall-springboot-common</module>
+        <module>tacomall-springboot-utils</module>
+        <module>tacomall-springboot-entity</module>
+        <module>tacomall-springboot-mapper</module>
+        <module>tacomall-springboot-service</module>
+        <module>tacomall-springboot-service-impl</module>
+        <module>tacomall-springboot-api</module>
+        <module>tacomall-springboot-provider</module>
+    </modules>
+
+    <packaging>pom</packaging>
+
+    <!--定义属性值-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <tacomallspringboot.common.version>1.0.0</tacomallspringboot.common.version>
+        <tacomallspringboot.utils.version>1.0.0</tacomallspringboot.utils.version>
+        <tacomallspringboot.entity.version>1.0.0</tacomallspringboot.entity.version>
+        <tacomallspringboot.mapper.version>1.0.0</tacomallspringboot.mapper.version>
+        <tacomallspringboot.api.admin.version>1.0.0</tacomallspringboot.api.admin.version>
+        <tacomallspringboot.api.portal.version>1.0.0</tacomallspringboot.api.portal.version>
+        <spring.boot.version>2.1.1.RELEASE</spring.boot.version>
+        <mybatisplus.boot.starter.version>3.1.0</mybatisplus.boot.starter.version>
+        <fastjson.version>1.2.58</fastjson.version>
+        <javajwt.version>3.4.0</javajwt.version>
+        <joda.time.version>2.9.9</joda.time.version>
+        <springfox.swagger2.version>2.9.2</springfox.swagger2.version>
+        <springfox.swagger.ui.version>2.9.2</springfox.swagger.ui.version>
+    </properties>
+
+    <!--测试依赖-->
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- 依赖声明 -->
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- SpringBoot的依赖配置-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <!--编译管理 jdk版本和字符集编码-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!--Maven远程仓库设置 非必要，可以删除-->
+    <repositories>
+        <repository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
+    </repositories>
+
+    <!--Maven远程插件库设置 非必要，可以删除-->
+    <pluginRepositories>
+        <pluginRepository>
+            <id>public</id>
+            <name>aliyun nexus</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+
+</project>
