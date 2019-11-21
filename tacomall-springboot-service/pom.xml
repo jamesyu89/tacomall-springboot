@@ -11,5 +11,22 @@
 
     <artifactId>tacomall-springboot-service</artifactId>
 
+    <packaging>jar</packaging>
+
+    <version>${tacomallspringboot.service.version}</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.tacomall</groupId>
+            <artifactId>tacomall-springboot-entity</artifactId>
+            <version>${tacomallspringboot.entity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.tacomall</groupId>
+            <artifactId>tacomall-springboot-mapper</artifactId>
+            <version>${tacomallspringboot.mapper.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

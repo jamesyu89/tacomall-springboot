@@ -29,6 +29,8 @@
         <tacomallspringboot.utils.version>1.0.0</tacomallspringboot.utils.version>
         <tacomallspringboot.entity.version>1.0.0</tacomallspringboot.entity.version>
         <tacomallspringboot.mapper.version>1.0.0</tacomallspringboot.mapper.version>
+        <tacomallspringboot.service.version>1.0.0</tacomallspringboot.service.version>
+        <tacomallspringboot.service.impl.version>1.0.0</tacomallspringboot.service.impl.version>
         <tacomallspringboot.api.admin.version>1.0.0</tacomallspringboot.api.admin.version>
         <tacomallspringboot.api.portal.version>1.0.0</tacomallspringboot.api.portal.version>
         <spring.boot.version>2.1.1.RELEASE</spring.boot.version>
