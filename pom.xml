@@ -12,8 +12,6 @@
         <module>tacomall-springboot-utils</module>
         <module>tacomall-springboot-entity</module>
         <module>tacomall-springboot-mapper</module>
-        <module>tacomall-springboot-service</module>
-        <module>tacomall-springboot-service-impl</module>
         <module>tacomall-springboot-api</module>
         <module>tacomall-springboot-provider</module>
     </modules>
@@ -29,8 +27,6 @@
         <tacomallspringboot.utils.version>1.0.0</tacomallspringboot.utils.version>
         <tacomallspringboot.entity.version>1.0.0</tacomallspringboot.entity.version>
         <tacomallspringboot.mapper.version>1.0.0</tacomallspringboot.mapper.version>
-        <tacomallspringboot.service.version>1.0.0</tacomallspringboot.service.version>
-        <tacomallspringboot.service.impl.version>1.0.0</tacomallspringboot.service.impl.version>
         <tacomallspringboot.api.admin.version>1.0.0</tacomallspringboot.api.admin.version>
         <tacomallspringboot.api.portal.version>1.0.0</tacomallspringboot.api.portal.version>
         <spring.boot.version>2.1.1.RELEASE</spring.boot.version>
@@ -40,10 +36,12 @@
         <joda.time.version>2.9.9</joda.time.version>
         <springfox.swagger2.version>2.9.2</springfox.swagger2.version>
         <springfox.swagger.ui.version>2.9.2</springfox.swagger.ui.version>
+        <mysql.version>8.0.13</mysql.version>
+        <baomidou.dynamicdatasource.version>2.5.6</baomidou.dynamicdatasource.version>
     </properties>
 
-    <!--测试依赖-->
     <dependencies>
+        <!--测试依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>

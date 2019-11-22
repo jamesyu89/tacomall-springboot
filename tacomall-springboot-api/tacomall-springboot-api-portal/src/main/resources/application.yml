@@ -3,3 +3,6 @@ server:
 spring:
   profiles:
     active: dev
+logging:
+  level:
+    com.baomidou: debug

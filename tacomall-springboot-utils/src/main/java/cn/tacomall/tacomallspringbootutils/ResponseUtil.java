@@ -20,6 +20,11 @@ public class ResponseUtil {
         return this;
     }
 
+    public ResponseDto success() {
+        resp.setMessage("操作成功");
+        return resp;
+    }
+
     public ResponseDto success(String message) {
         resp.setMessage(message);
         return resp;
