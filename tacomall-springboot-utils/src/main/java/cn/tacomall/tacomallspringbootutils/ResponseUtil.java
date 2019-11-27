@@ -29,4 +29,14 @@ public class ResponseUtil {
         resp.setMessage(message);
         return resp;
     }
+
+    public ResponseDto error() {
+        resp.setMessage("操作失败");
+        return resp;
+    }
+
+    public ResponseDto error(String message) {
+        resp.setMessage(message);
+        return resp;
+    }
 }

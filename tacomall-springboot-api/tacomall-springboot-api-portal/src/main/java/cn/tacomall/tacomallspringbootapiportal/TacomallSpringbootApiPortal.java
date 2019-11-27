@@ -14,7 +14,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.mybatis.spring.annotation.MapperScan;
 
 /**
- * @version: V1.0
  * @author: running-cat
  * @className: TacomallSpringbootApiPortal
  * @packageName: cn.tacomall.tacomallsprinbootapiportal
