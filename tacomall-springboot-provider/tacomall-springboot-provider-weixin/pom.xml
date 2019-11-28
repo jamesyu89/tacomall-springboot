@@ -11,5 +11,13 @@
 
     <artifactId>tacomall-springboot-provider-weixin</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-miniapp</artifactId>
+            <version>${binarywang.weixinjavaminiapp.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

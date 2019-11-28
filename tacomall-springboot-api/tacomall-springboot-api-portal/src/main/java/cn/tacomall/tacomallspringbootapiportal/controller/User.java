@@ -53,7 +53,7 @@ public class User {
      * @throws:
      */
 
-    @ApiOperation(value = "注册接口", notes = "用户注册接口", httpMethod = "POST")
+    @ApiOperation(value = "注册", notes = "用户注册接口", httpMethod = "POST")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "username", value = "用户名", required = true, paramType = "path"),
             @ApiImplicitParam(name = "password", value = "密码", required = true, paramType = "path")
@@ -68,6 +68,73 @@ public class User {
         if (user == ConstantUtil.EMPTY_MAP) {
             return responseUtil.error();
         }
+        return responseUtil.success();
+    }
+
+    /**
+     * @author: running-cat
+     * @methodsName: login
+     * @description: 用户登录
+     * @param: username 用户名 password 密码
+     * @return: ResponseDto
+     * @throws:
+     */
+
+    @ApiOperation(value = "登录", notes = "登录接口接口", httpMethod = "POST")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "username", value = "用户名", required = true, paramType = "path"),
+            @ApiImplicitParam(name = "password", value = "密码", required = true, paramType = "path")
+    })
+    @IgnoreAuth
+    @PostMapping("login")
+    public ResponseDto login(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
+        /**
+         * @TODO
+         */
+        return responseUtil.success();
+    }
+
+    /**
+     * @author: running-cat
+     * @methodsName: messageCodeLogin
+     * @description: 用户登录
+     * @param: username 用户名 code 验证码
+     * @return: ResponseDto
+     * @throws:
+     */
+
+    @ApiOperation(value = "验证码登录", notes = "验证码登录接口", httpMethod = "POST")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "username", value = "用户名", required = true, paramType = "path"),
+            @ApiImplicitParam(name = "code", value = "验证码", required = true, paramType = "path")
+    })
+    @IgnoreAuth
+    @PostMapping("messageCodeLogin")
+    public ResponseDto messageCodeLogin(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
+        /**
+         * @TODO
+         */
+        return responseUtil.success();
+    }
+
+    /**
+     * @author: running-cat
+     * @methodsName: miniAppLogin
+     * @description: 小程序用户登录
+     * @param: iv code encryptedData
+     * @return: ResponseDto
+     * @throws:
+     */
+
+    @ApiOperation(value = "小程序用户注册接口", notes = "小程序用户注册接口", httpMethod = "POST")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "iv", value = "iv", required = true, paramType = "path"),
+            @ApiImplicitParam(name = "code", value = "code", required = true, paramType = "path"),
+            @ApiImplicitParam(name = "encryptedData", value = "encryptedData", required = true, paramType = "path")
+    })
+    @IgnoreAuth
+    @PostMapping("miniAppLogin")
+    public ResponseDto miniAppRegister(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
         return responseUtil.success();
     }
 }
