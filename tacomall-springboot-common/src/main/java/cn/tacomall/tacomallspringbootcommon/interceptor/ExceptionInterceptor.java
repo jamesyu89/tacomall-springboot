@@ -62,6 +62,18 @@ public class ExceptionInterceptor {
         return serverSideError;
     }
 
+    @ExceptionHandler(value = SqlException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorDto<String> sqlErrorHandler(HttpServletRequest req, SqlException e) throws Exception {
+        ErrorDto<String> sqlError = new ErrorDto<>();
+        sqlError.setMessage(e.getMessage());
+        sqlError.setCode(ErrorDto.ERROR);
+        sqlError.setData("Some Data");
+        sqlError.setUrl(req.getRequestURL().toString());
+        return sqlError;
+    }
+
     @ExceptionHandler(value = UnauthorizedException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.UNAUTHORIZED)

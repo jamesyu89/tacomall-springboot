@@ -3,8 +3,8 @@ package cn.tacomall.tacomallspringbootentity.user;
 import lombok.Data;
 
 @Data
-public class User {
+public class UserWeixin {
     private int id;
-    private String username;
-    private String password;
+    private int userId;
+    private String open_id;
 }

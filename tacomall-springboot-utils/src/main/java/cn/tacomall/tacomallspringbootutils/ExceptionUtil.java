@@ -19,6 +19,10 @@ public class ExceptionUtil {
         throw new ServerException(message);
     }
 
+    public static void throwSqlException(String message) throws SqlException {
+        throw new SqlException(message);
+    }
+
     public static void throwUnauthorizedException(String message) throws UnauthorizedException {
         throw new UnauthorizedException(message);
     }

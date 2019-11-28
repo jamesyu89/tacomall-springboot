@@ -13,6 +13,8 @@
 
 package cn.tacomall.tacomallspringbootapiportal.controller;
 
+import java.util.Map;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +25,7 @@ import io.swagger.annotations.*;
 import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootutils.RequestUtil;
 import cn.tacomall.tacomallspringbootutils.ResponseUtil;
+import cn.tacomall.tacomallspringbootutils.ConstantUtil;
 import cn.tacomall.tacomallspringbootapiportal.annotation.IgnoreAuth;
 import cn.tacomall.tacomallspringbootapiportal.service.user.*;
 
@@ -60,9 +63,9 @@ public class User {
     public ResponseDto register(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
         String username = jsonRequest.getStr("username");
         String password = jsonRequest.getStr("password");
-        int userId = userService.createUser(username, password);
-        responseUtil.data(userId);
-        if (userId == 0) {
+        Map<String, Object> user = userService.create(username, password);
+        responseUtil.data(user);
+        if (user == ConstantUtil.EMPTY_MAP) {
             return responseUtil.error();
         }
         return responseUtil.success();
