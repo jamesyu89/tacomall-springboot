@@ -11,11 +11,20 @@
 
     <artifactId>tacomall-springboot-provider-weixin</artifactId>
 
+    <packaging>jar</packaging>
+
+    <version>${tacomallspringboot.provider.weixin.version}</version>
+
     <dependencies>
         <dependency>
             <groupId>com.github.binarywang</groupId>
             <artifactId>weixin-java-miniapp</artifactId>
             <version>${binarywang.weixinjavaminiapp.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 

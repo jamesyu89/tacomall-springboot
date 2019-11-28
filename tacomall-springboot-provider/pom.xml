@@ -21,5 +21,23 @@
         <module>tacomall-springboot-provider-weixin</module>
     </modules>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.tacomall</groupId>
+            <artifactId>tacomall-springboot-common</artifactId>
+            <version>${tacomallspringboot.common.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.tacomall</groupId>
+            <artifactId>tacomall-springboot-utils</artifactId>
+            <version>${tacomallspringboot.utils.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.tacomall</groupId>
+            <artifactId>tacomall-springboot-entity</artifactId>
+            <version>${tacomallspringboot.entity.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>

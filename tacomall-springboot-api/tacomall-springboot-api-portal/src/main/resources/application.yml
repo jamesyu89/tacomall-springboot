@@ -6,3 +6,20 @@ spring:
 logging:
   level:
     com.baomidou: debug
+wx:
+  miniapp:
+    configs:
+      - appid:
+        secret:
+        token:
+        aesKey:
+        msgDataFormat: JSON
+  oss:
+    file:
+      endpoint:
+        keyid:
+        keysecret:
+        bucketname:
+        filehost:
+
+

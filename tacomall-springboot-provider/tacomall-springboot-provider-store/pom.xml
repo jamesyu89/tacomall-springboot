@@ -11,5 +11,17 @@
 
     <artifactId>tacomall-springboot-provider-store</artifactId>
 
+    <packaging>jar</packaging>
+
+    <version>${tacomallspringboot.provider.store.version}</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
+            <version>${aliyun.oss.version}</version>
+        </dependency>
+    </dependencies>
+
 
 </project>
