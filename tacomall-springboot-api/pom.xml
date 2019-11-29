@@ -37,6 +37,11 @@
             <artifactId>tacomall-springboot-mapper</artifactId>
             <version>${tacomallspringboot.mapper.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.tacomall</groupId>
+            <artifactId>tacomall-springboot-provider-weixin</artifactId>
+            <version>${tacomallspringboot.provider.weixin.version}</version>
+        </dependency>
     </dependencies>
 
 

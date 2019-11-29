@@ -27,6 +27,7 @@ import cn.tacomall.tacomallspringbootutils.RequestUtil;
 import cn.tacomall.tacomallspringbootutils.ResponseUtil;
 import cn.tacomall.tacomallspringbootutils.ConstantUtil;
 import cn.tacomall.tacomallspringbootapiportal.annotation.IgnoreAuth;
+import cn.tacomall.tacomallspringbootapiportal.annotation.RequireAuth;
 import cn.tacomall.tacomallspringbootapiportal.service.user.*;
 
 /**
@@ -63,9 +64,9 @@ public class User {
     public ResponseDto register(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
         String username = jsonRequest.getStr("username");
         String password = jsonRequest.getStr("password");
-        Map<String, Object> user = userService.create(username, password);
-        responseUtil.data(user);
-        if (user == ConstantUtil.EMPTY_MAP) {
+        Map<String, Object> map = userService.register(username, password);
+        responseUtil.data(map);
+        if (map == ConstantUtil.EMPTY_MAP) {
             return responseUtil.error();
         }
         return responseUtil.success();
@@ -88,24 +89,25 @@ public class User {
     @IgnoreAuth
     @PostMapping("login")
     public ResponseDto login(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
-        /**
-         * @TODO
-         */
+        String username = jsonRequest.getStr("username");
+        String password = jsonRequest.getStr("password");
+        Map<String, Object> map = userService.login(username, password);
+        responseUtil.data(map);
         return responseUtil.success();
     }
 
     /**
      * @author: running-cat
      * @methodsName: messageCodeLogin
-     * @description: 用户登录
-     * @param: username 用户名 code 验证码
+     * @description: 手机验证码登录
+     * @param: mobile 手机号 code 验证码
      * @return: ResponseDto
      * @throws:
      */
 
     @ApiOperation(value = "验证码登录", notes = "验证码登录接口", httpMethod = "POST")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "username", value = "用户名", required = true, paramType = "path"),
+            @ApiImplicitParam(name = "mobile", value = "手机号", required = true, paramType = "path"),
             @ApiImplicitParam(name = "code", value = "验证码", required = true, paramType = "path")
     })
     @IgnoreAuth
@@ -134,7 +136,31 @@ public class User {
     })
     @IgnoreAuth
     @PostMapping("miniAppLogin")
-    public ResponseDto miniAppRegister(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
+    public ResponseDto miniAppLogin(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
+        String iv = jsonRequest.getStr("iv");
+        String code = jsonRequest.getStr("code");
+        String encryptedData = jsonRequest.getStr("encryptedData");
+        Map<String, Object> map = userService.miniAppLogin(iv, code, encryptedData);
+        responseUtil.data(map);
+        return responseUtil.success();
+    }
+
+    /**
+     * @author: running-cat
+     * @methodsName: synopsis
+     * @description: 用户信息
+     * @param:
+     * @return: ResponseDto
+     * @throws:
+     */
+
+    @ApiOperation(value = "用户信息", notes = "用户信息接口", httpMethod = "POST")
+    @ApiImplicitParams({})
+    @RequireAuth
+    @PostMapping("synopsis")
+    public ResponseDto synopsis(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
+        Map<String, Object> map = userService.synopsis();
+        responseUtil.data(map);
         return responseUtil.success();
     }
 }

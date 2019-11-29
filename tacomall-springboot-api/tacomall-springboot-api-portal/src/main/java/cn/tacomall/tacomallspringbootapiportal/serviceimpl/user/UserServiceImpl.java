@@ -25,14 +25,17 @@ import org.springframework.transaction.TransactionDefinition;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import cn.tacomall.tacomallspringbootutils.ExceptionUtil;
-import cn.tacomall.tacomallspringbootutils.ConstantUtil;
 import cn.tacomall.tacomallspringbootutils.PasswordUtil;
 import cn.tacomall.tacomallspringbootutils.ObjectUtil;
+import cn.tacomall.tacomallspringbootutils.ConstantUtil;
+import cn.tacomall.tacomallspringbootutils.JwtUtil;
+import cn.tacomall.tacomallspringbootutils.IntUtil;
 import cn.tacomall.tacomallspringbootentity.user.User;
 import cn.tacomall.tacomallspringbootmapper.user.UserMapper;
 import cn.tacomall.tacomallspringbootentity.user.UserProfile;
 import cn.tacomall.tacomallspringbootmapper.user.UserProfileMapper;
 import cn.tacomall.tacomallspringbootapiportal.service.user.UserService;
+import cn.tacomall.tacomallspringbootproviderweixin.module.ma.WeixinMaUserProvider;
 
 /**
  * @author: running-cat
@@ -64,7 +67,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      */
 
     @Override
-    public Map<String, Object> create(String username, String password) throws RuntimeException {
+    public Map<String, Object> register(String username, String password) {
 
         /**
          * 查询是否已经存在用户
@@ -75,7 +78,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
                         .lambda()
                         .eq(User::getUsername, username));
         if (!ObjectUtil.isNull(exist)) {
-            return ConstantUtil.EMPTY_MAP;
+            ExceptionUtil.throwBizException("用户已存在");
         }
 
         /**
@@ -83,7 +86,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
          * 开启事务
          */
 
-        String encodePsw = PasswordUtil.encode(password);
         Map<String, Object> map = new HashMap<>(2);
         TransactionStatus transactionStatus = dataSourceTransactionManager.getTransaction(transactionDefinition);
         try {
@@ -94,7 +96,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
             User user = new User();
             user.setUsername(username);
-            user.setPassword(encodePsw);
+            user.setPassword(PasswordUtil.encode(password));
             baseMapper.insert(user);
 
             /**
@@ -123,19 +125,64 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return map;
     }
 
-    @Override
-    public boolean replace() {
-        return true;
-    }
+    /**
+     * @author: running-cat
+     * @methodsName: login
+     * @description: 用户登录
+     * @param: username 用户名称 password 用户密码
+     * @return: Map<String, Object>
+     * @throws:
+     */
 
     @Override
-    public Map<String, Object> get() {
+    public Map<String, Object> login(String username, String password) {
+
+        User user = baseMapper
+                .selectOne(new QueryWrapper<User>()
+                        .lambda()
+                        .eq(User::getUsername, username)
+                        .eq(User::getPassword, PasswordUtil.encode(password)));
+        if (ObjectUtil.isNull(user)) {
+            ExceptionUtil.throwBizException("用户密码错误");
+        }
+
+        Map<String, Object> map = new HashMap<>(2);
+        try {
+            Map<String, String> claims = new HashMap<>(1);
+            claims.put("id", IntUtil.toString(user.getId()));
+            map.put("token", JwtUtil.create(claims));
+        } catch (Exception e) {
+            ExceptionUtil.throwBizException("token生成失败");
+        }
+        return map;
+    }
+
+    /**
+     * @author: running-cat
+     * @methodsName: miniAppLogin
+     * @description: 微信用户登录
+     * @param: iv code encryptedData
+     * @return: Map<String, Object>
+     * @throws:
+     */
+
+    @Override
+    public Map<String, Object> miniAppLogin(String iv, String code, String encryptedData) {
         return ConstantUtil.EMPTY_MAP;
     }
 
+    /**
+     * @author: running-cat
+     * @methodsName: synopsis
+     * @description: 用户信息
+     * @param:
+     * @return: Map<String, Object>
+     * @throws:
+     */
+
     @Override
-    public boolean delete() {
-        return true;
+    public Map<String, Object> synopsis() {
+        return ConstantUtil.EMPTY_MAP;
     }
 
 }

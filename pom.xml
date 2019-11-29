@@ -30,6 +30,7 @@
         <tacomallspringboot.provider.weixin.version>1.0.0</tacomallspringboot.provider.weixin.version>
         <tacomallspringboot.provider.store.version>1.0.0</tacomallspringboot.provider.store.version>
         <tacomallspringboot.provider.search.version>1.0.0</tacomallspringboot.provider.search.version>
+        <tacomallspringboot.provider.msg.version>1.0.0</tacomallspringboot.provider.msg.version>
         <tacomallspringboot.api.admin.version>1.0.0</tacomallspringboot.api.admin.version>
         <tacomallspringboot.api.portal.version>1.0.0</tacomallspringboot.api.portal.version>
         <spring.boot.version>2.1.1.RELEASE</spring.boot.version>

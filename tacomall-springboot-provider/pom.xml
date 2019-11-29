@@ -19,6 +19,7 @@
         <module>tacomall-springboot-provider-store</module>
         <module>tacomall-springboot-provider-search</module>
         <module>tacomall-springboot-provider-weixin</module>
+        <module>tacomall-springboot-provider-msg</module>
     </modules>
 
     <dependencies>
