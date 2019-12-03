@@ -98,7 +98,7 @@ public class User {
 
     /**
      * @author: running-cat
-     * @methodsName: messageCodeLogin
+     * @methodsName: msgCodeLogin
      * @description: 手机验证码登录
      * @param: mobile 手机号 code 验证码
      * @return: ResponseDto
@@ -111,7 +111,7 @@ public class User {
             @ApiImplicitParam(name = "code", value = "验证码", required = true, paramType = "path")
     })
     @IgnoreAuth
-    @PostMapping("messageCodeLogin")
+    @PostMapping("msgCodeLogin")
     public ResponseDto messageCodeLogin(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
         /**
          * @TODO

@@ -12,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import org.mybatis.spring.annotation.MapperScan;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @author: running-cat
@@ -23,6 +24,7 @@ import org.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication(scanBasePackages="cn.tacomall")
 @MapperScan("cn.tacomall.tacomallspringbootmapper")
+@EnableSwagger2
 public class TacomallSpringbootApiPortal {
     public static void main(String[] args) {
         SpringApplication.run(TacomallSpringbootApiPortal.class, args);
