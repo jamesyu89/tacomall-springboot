@@ -112,7 +112,7 @@ public class User {
     })
     @IgnoreAuth
     @PostMapping("msgCodeLogin")
-    public ResponseDto messageCodeLogin(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
+    public ResponseDto msgCodeLogin(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
         /**
          * @TODO
          */

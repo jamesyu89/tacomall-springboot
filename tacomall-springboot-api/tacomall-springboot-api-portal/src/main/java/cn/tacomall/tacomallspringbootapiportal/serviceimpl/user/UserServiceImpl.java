@@ -35,7 +35,7 @@ import cn.tacomall.tacomallspringbootmapper.user.UserMapper;
 import cn.tacomall.tacomallspringbootentity.user.UserProfile;
 import cn.tacomall.tacomallspringbootmapper.user.UserProfileMapper;
 import cn.tacomall.tacomallspringbootapiportal.service.user.UserService;
-import cn.tacomall.tacomallspringbootproviderweixin.module.ma.WeixinMaUserProvider;
+import cn.tacomall.tacomallspringbootapiportal.provider.WeixinProvider;
 
 /**
  * @author: running-cat
@@ -47,6 +47,9 @@ import cn.tacomall.tacomallspringbootproviderweixin.module.ma.WeixinMaUserProvid
 
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
+
+    @Autowired
+    WeixinProvider weixinProvider;
 
     @Autowired
     private UserProfileMapper userProfileMapper;
@@ -168,6 +171,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public Map<String, Object> miniAppLogin(String iv, String code, String encryptedData) {
+        weixinProvider.login();
         return ConstantUtil.EMPTY_MAP;
     }
 

@@ -22,6 +22,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import cn.tacomall.tacomallspringbootproviderweixin.properties.MaProperties;
+
 
 @Configuration
 @EnableConfigurationProperties(MaProperties.class)

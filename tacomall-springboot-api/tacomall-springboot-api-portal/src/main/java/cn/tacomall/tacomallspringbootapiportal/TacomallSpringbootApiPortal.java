@@ -22,7 +22,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @data: 2019年11月23日下午12:28:39
  **/
 
-@SpringBootApplication(scanBasePackages="cn.tacomall")
+@SpringBootApplication(scanBasePackages={
+        "cn.tacomall.tacomallspringbootcommon",
+        "cn.tacomall.tacomallspringbootentity",
+        "cn.tacomall.tacomallspringbootmapper",
+        "cn.tacomall.tacomallspringbootapiportal"
+})
 @MapperScan("cn.tacomall.tacomallspringbootmapper")
 @EnableSwagger2
 public class TacomallSpringbootApiPortal {
