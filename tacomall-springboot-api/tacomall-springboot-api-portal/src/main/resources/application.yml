@@ -6,5 +6,7 @@ spring:
 logging:
   level:
     com.baomidou: debug
-
-
+wx:
+  ma:
+    url: http://127.0.0.1:5000
+    appid: wx9c2113eb137fdf6a

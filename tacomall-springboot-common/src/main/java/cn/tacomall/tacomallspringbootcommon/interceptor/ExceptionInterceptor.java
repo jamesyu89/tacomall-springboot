@@ -50,6 +50,18 @@ public class ExceptionInterceptor {
         return forbiddenError;
     }
 
+    @ExceptionHandler(value = RpcException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorDto<String> rpcErrorHandler(HttpServletRequest req, RpcException e) throws Exception {
+        ErrorDto<String> rpcError = new ErrorDto<>();
+        rpcError.setMessage(e.getMessage());
+        rpcError.setCode(ErrorDto.ERROR);
+        rpcError.setData("Some Data");
+        rpcError.setUrl(req.getRequestURL().toString());
+        return rpcError;
+    }
+
     @ExceptionHandler(value = ServerException.class)
     @ResponseBody
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

@@ -52,6 +52,11 @@
             <artifactId>springfox-swagger-ui</artifactId>
             <version>${springfox.swagger.ui.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 

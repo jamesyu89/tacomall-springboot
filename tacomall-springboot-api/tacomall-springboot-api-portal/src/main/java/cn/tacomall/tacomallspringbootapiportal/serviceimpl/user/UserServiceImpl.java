@@ -16,6 +16,7 @@ package cn.tacomall.tacomallspringbootapiportal.serviceimpl.user;
 import java.util.Map;
 import java.util.HashMap;
 
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -35,7 +36,7 @@ import cn.tacomall.tacomallspringbootmapper.user.UserMapper;
 import cn.tacomall.tacomallspringbootentity.user.UserProfile;
 import cn.tacomall.tacomallspringbootmapper.user.UserProfileMapper;
 import cn.tacomall.tacomallspringbootapiportal.service.user.UserService;
-import cn.tacomall.tacomallspringbootapiportal.provider.WeixinProvider;
+import cn.tacomall.tacomallspringbootapiportal.provider.WeixinMaProvider;
 
 /**
  * @author: running-cat
@@ -49,7 +50,7 @@ import cn.tacomall.tacomallspringbootapiportal.provider.WeixinProvider;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Autowired
-    WeixinProvider weixinProvider;
+    WeixinMaProvider weixinMaProvider;
 
     @Autowired
     private UserProfileMapper userProfileMapper;
@@ -70,7 +71,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
      */
 
     @Override
-    public Map<String, Object> register(String username, String password) {
+    public Map<String, Object> register(String username, String password) throws Exception {
 
         /**
          * 查询是否已经存在用户
@@ -171,7 +172,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public Map<String, Object> miniAppLogin(String iv, String code, String encryptedData) {
-        weixinProvider.login();
+        JSONObject json = weixinMaProvider.login(iv, code, encryptedData);
         return ConstantUtil.EMPTY_MAP;
     }
 

@@ -1,6 +1,6 @@
 package cn.tacomall.tacomallspringbootcommon.exception;
 
-public class ForbiddenException extends Exception {
+public class ForbiddenException extends RuntimeException {
     public ForbiddenException(String message) {
         super(message);
     }

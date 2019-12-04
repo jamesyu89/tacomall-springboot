@@ -1,6 +1,8 @@
 package cn.tacomall.tacomallspringbootcommon.exception;
 
-public class SqlException extends RuntimeException {
+import java.sql.SQLException;
+
+public class SqlException extends SQLException {
     public SqlException(String message) {
         super(message);
     }

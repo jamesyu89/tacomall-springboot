@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication(scanBasePackages={
+        "cn.tacomall.tacomallspringbootcommon",
         "cn.tacomall.tacomallspringbootproviderweixin"
 }, exclude= {DataSourceAutoConfiguration.class})
 public class TacomallSpringbootProviderWeixin {

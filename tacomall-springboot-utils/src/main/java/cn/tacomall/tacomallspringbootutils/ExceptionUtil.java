@@ -15,6 +15,10 @@ public class ExceptionUtil {
         throw new ForbiddenException(message);
     }
 
+    public static void throwRpcException(String message) throws RpcException {
+        throw new RpcException(message);
+    }
+
     public static void throwServerException(String message) throws ServerException {
         throw new ServerException(message);
     }
