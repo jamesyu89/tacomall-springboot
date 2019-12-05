@@ -2,8 +2,11 @@ package cn.tacomall.tacomallspringbootutils;
 
 import java.util.Collections;
 import java.util.Map;
+import java.util.HashMap;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 

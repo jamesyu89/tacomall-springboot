@@ -6,7 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
 @Component
-@ConfigurationProperties(prefix = "wx.ma")
+@ConfigurationProperties(prefix = "provider.wx.ma")
 public class WeixinMaProperties {
 
     private String url;

@@ -12,4 +12,10 @@ public class UserWeixin {
     private int userId;
 
     private String openId;
+
+    private String nickname;
+
+    private String gender;
+
+    private String avatarUrl;
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tacomall.tacomallspringbootmapper.user.UserMapper">
+
+    <resultMap id="user" type="cn.tacomall.tacomallspringbootentity.user.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+    </resultMap>
+
+    <select id="getUserByOpenId" resultMap="user">
+        select *
+        from user u
+        left join user_weixin w
+        on u.id = w.user_id
+        where w.open_id = #{openId}
+    </select>
+</mapper>

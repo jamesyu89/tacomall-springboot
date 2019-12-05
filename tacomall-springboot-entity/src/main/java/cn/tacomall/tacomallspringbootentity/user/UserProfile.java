@@ -7,11 +7,12 @@ import com.baomidou.mybatisplus.annotation.*;
 public class UserProfile {
 
 
+    @TableId(value = "id", type = IdType.AUTO)
     private int id;
 
     private int userId;
 
-    private String avatar;
-
     private String nickname;
+
+    private String avatar;
 }

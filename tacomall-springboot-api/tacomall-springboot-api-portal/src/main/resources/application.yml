@@ -1,12 +1,20 @@
 server:
   port: 4000
+
 spring:
   profiles:
     active: dev
+
 logging:
   level:
     com.baomidou: debug
-wx:
-  ma:
-    url: http://127.0.0.1:5000
-    appid: wx9c2113eb137fdf6a
+
+mybatis-plus:
+  type-aliases-package: cn.tacomall.tacomallspringbootmapper
+  mapper-locations: classpath:/mapper/*Mapper.xml
+
+provider:
+  wx:
+    ma:
+      url: http://127.0.0.1:5000
+      appid: wx9c2113eb137fdf6a

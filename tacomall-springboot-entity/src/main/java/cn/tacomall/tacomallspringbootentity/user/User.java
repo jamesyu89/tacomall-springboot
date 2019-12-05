@@ -13,4 +13,12 @@ public class User {
     private String username;
 
     private String password;
+
+    private int status;
+
+    @TableField(exist = false)
+    private UserProfile userProfile;
+
+    @TableField(exist = false)
+    private UserWeixin userWeixin;
 }
