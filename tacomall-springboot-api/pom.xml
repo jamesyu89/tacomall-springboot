@@ -19,6 +19,7 @@
     <modules>
         <module>tacomall-springboot-api-portal</module>
         <module>tacomall-springboot-api-admin</module>
+        <module>tacomall-springboot-api-store</module>
     </modules>
 
     <dependencies>

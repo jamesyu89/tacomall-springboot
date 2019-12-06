@@ -9,4 +9,6 @@ import cn.tacomall.tacomallspringbootentity.user.User;
 public interface UserMapper extends BaseMapper<User> {
 
     User getUserByOpenId(String openId);
+
+    User getUserSynopsis(String id);
 }

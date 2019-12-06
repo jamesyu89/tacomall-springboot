@@ -3,11 +3,11 @@
  * fileName: Index.java
  * packageName: cn.tacomall.tacomallsprinbootapiportal.controller
  * date: 2019年11月23日下午12:28:39
- *
+ * <p>
  * 修改履历:
- *     日期                          修正者           主要内容
- *     2019年11月23日下午12:28:39    running-cat      初版完成
- *
+ * 日期                          修正者           主要内容
+ * 2019年11月23日下午12:28:39    running-cat      初版完成
+ * <p>
  * copyright(c) 2019-2020 芒果教育科技有限公司
  */
 
@@ -32,23 +32,23 @@ import cn.tacomall.tacomallspringbootapiportal.annotation.IgnoreAuth;
  * @data: 2019年11月23日下午12:28:39
  **/
 
-@Api(tags = "portal domain and index module")
+@Api(tags = "默认模板入口")
 @RestController
 @RequestMapping(value = "/portal/index/")
 public class Index {
 
     /**
-     * @author:  running-cat
+     * @author: running-cat
      * @methodsName: index
      * @description: 默认方法
-     * @param:  code 测试验证码
+     * @param: code 测试验证码
      * @return: ResponseDto
      * @throws:
      */
 
-    @ApiOperation(value = "index", notes = "index method", httpMethod = "POST")
+    @ApiOperation(value = "index", notes = "index方法", httpMethod = "POST")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "code", value = "verify code", required = true, paramType = "path"),
+            @ApiImplicitParam(name = "code", value = "验证码", required = true, paramType = "path"),
     })
     @IgnoreAuth
     @PostMapping("index")

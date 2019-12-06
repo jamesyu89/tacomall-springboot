@@ -7,6 +7,14 @@
         <result property="username" column="username"/>
     </resultMap>
 
+    <resultMap id="userSynopsis" type="cn.tacomall.tacomallspringbootentity.user.User" extends="user">
+        <association property="userProfile" column="id"
+                     select="cn.tacomall.tacomallspringbootmapper.user.UserProfileMapper.selectByUserId"/>
+        <association property="userWeixin" column="id"
+                     select="cn.tacomall.tacomallspringbootmapper.user.UserWeixinMapper.selectByUserId"/>
+    </resultMap>
+
+
     <select id="getUserByOpenId" resultMap="user">
         select *
         from user u
@@ -14,4 +22,11 @@
         on u.id = w.user_id
         where w.open_id = #{openId}
     </select>
+
+    <select id="getUserSynopsis" resultMap="userSynopsis">
+        select *
+        from user
+        where id = #{id}
+    </select>
+
 </mapper>

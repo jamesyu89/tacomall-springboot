@@ -1,7 +1,6 @@
 package cn.tacomall.tacomallspringbootapiportal.interceptor;
 
 import java.util.Map;
-import java.util.HashMap;
 import java.lang.reflect.Method;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
