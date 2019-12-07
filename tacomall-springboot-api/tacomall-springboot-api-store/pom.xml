@@ -13,5 +13,7 @@
 
     <packaging>jar</packaging>
 
+    <version>${tacomallspringboot.api.store.version}</version>
+
 
 </project>

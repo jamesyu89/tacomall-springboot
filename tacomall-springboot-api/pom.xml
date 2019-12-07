@@ -44,6 +44,11 @@
             <version>${tacomallspringboot.provider.weixin.version}</version>
         </dependency>
         <dependency>
+            <groupId>cn.tacomall</groupId>
+            <artifactId>tacomall-springboot-security</artifactId>
+            <version>${tacomallspringboot.security.version}</version>
+        </dependency>
+        <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
             <version>${springfox.swagger2.version}</version>

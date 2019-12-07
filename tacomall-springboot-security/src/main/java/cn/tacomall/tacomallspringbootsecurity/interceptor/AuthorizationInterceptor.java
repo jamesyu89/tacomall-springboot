@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootapiportal.interceptor;
+package cn.tacomall.tacomallspringbootsecurity.interceptor;
 
 import java.util.Map;
 import java.lang.reflect.Method;
@@ -12,7 +12,7 @@ import org.springframework.web.method.HandlerMethod;
 import cn.tacomall.tacomallspringbootutils.JwtUtil;
 import cn.tacomall.tacomallspringbootutils.StringUtil;
 import cn.tacomall.tacomallspringbootutils.ExceptionUtil;
-import cn.tacomall.tacomallspringbootapiportal.annotation.*;
+import cn.tacomall.tacomallspringbootsecurity.annotation.*;
 
 public class AuthorizationInterceptor implements HandlerInterceptor {
     private static final String TOKEN_KEY = "x-access-token";

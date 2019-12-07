@@ -3,8 +3,8 @@ server:
 wx:
   miniapp:
     configs:
-      - appid:
-        secret:
+      - appid: wx9c2113eb137fdf6a
+        secret: 6beabd0e7d4dbe2fbaa941eca08e3958
         token:
         aesKey:
         msgDataFormat: JSON

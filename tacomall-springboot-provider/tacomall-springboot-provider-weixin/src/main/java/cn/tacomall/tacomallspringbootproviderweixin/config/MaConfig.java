@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import cn.tacomall.tacomallspringbootutils.ExceptionUtil;
 import cn.tacomall.tacomallspringbootproviderweixin.properties.MaProperties;
 
 
@@ -41,7 +42,7 @@ public class MaConfig {
     public static WxMaService getMaService(String appid) {
         WxMaService wxService = maServices.get(appid);
         if (wxService == null) {
-            throw new IllegalArgumentException(String.format("未找到对应appid=[%s]的配置，请核实！", appid));
+            ExceptionUtil.throwServerException(String.format("未找到对应appid=[%s]的配置，请核实！", appid));
         }
 
         return wxService;
@@ -55,7 +56,7 @@ public class MaConfig {
     public void init() {
         List<MaProperties.Config> configs = this.properties.getConfigs();
         if (configs == null) {
-            throw new RuntimeException("大哥，拜托先看下项目首页的说明（readme文件），添加下相关配置，注意别配错了！");
+            ExceptionUtil.throwServerException("大哥，拜托先看下项目首页的说明（readme文件），添加下相关配置，注意别配错了！");
         }
 
         maServices = configs.stream()

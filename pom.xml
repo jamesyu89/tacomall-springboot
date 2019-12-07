@@ -14,6 +14,7 @@
         <module>tacomall-springboot-mapper</module>
         <module>tacomall-springboot-api</module>
         <module>tacomall-springboot-provider</module>
+        <module>tacomall-springboot-security</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -31,8 +32,10 @@
         <tacomallspringboot.provider.store.version>1.0.0</tacomallspringboot.provider.store.version>
         <tacomallspringboot.provider.search.version>1.0.0</tacomallspringboot.provider.search.version>
         <tacomallspringboot.provider.msg.version>1.0.0</tacomallspringboot.provider.msg.version>
+        <tacomallspringboot.security.version>1.00</tacomallspringboot.security.version>
         <tacomallspringboot.api.admin.version>1.0.0</tacomallspringboot.api.admin.version>
         <tacomallspringboot.api.portal.version>1.0.0</tacomallspringboot.api.portal.version>
+        <tacomallspringboot.api.store.version>1.0.0</tacomallspringboot.api.store.version>
         <spring.boot.version>2.1.1.RELEASE</spring.boot.version>
         <mybatisplus.boot.starter.version>3.1.0</mybatisplus.boot.starter.version>
         <fastjson.version>1.2.58</fastjson.version>

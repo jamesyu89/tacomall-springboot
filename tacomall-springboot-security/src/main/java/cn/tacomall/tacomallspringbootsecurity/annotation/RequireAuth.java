@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootapiportal.annotation;
+package cn.tacomall.tacomallspringbootsecurity.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,6 +7,6 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface IgnoreAuth {
+public @interface RequireAuth {
     boolean required() default true;
 }

@@ -10,6 +10,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
         "cn.tacomall.tacomallspringbootcommon",
         "cn.tacomall.tacomallspringbootentity",
         "cn.tacomall.tacomallspringbootmapper",
+        "cn.tacomall.tacomallspringbootsecurity",
         "cn.tacomall.tacomallspringbootapiportal"
 })
 @MapperScan("cn.tacomall.tacomallspringbootmapper")

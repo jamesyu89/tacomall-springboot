@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootapiportal.utils;
+package cn.tacomall.tacomallspringbootsecurity.utils;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -6,7 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-public class RequestUser {
+public class RequestUserUtil {
     public static JSONObject get() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
                 .getRequest();

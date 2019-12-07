@@ -11,5 +11,9 @@
 
     <artifactId>tacomall-springboot-api-admin</artifactId>
 
+    <packaging>jar</packaging>
+
+    <version>${tacomallspringboot.api.admin.version}</version>
+
 
 </project>

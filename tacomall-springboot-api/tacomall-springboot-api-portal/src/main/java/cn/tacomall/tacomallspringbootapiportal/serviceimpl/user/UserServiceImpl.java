@@ -11,7 +11,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
-import cn.tacomall.tacomallspringbootapiportal.utils.RequestUser;
+import cn.tacomall.tacomallspringbootsecurity.utils.RequestUserUtil;
 import cn.tacomall.tacomallspringbootutils.ExceptionUtil;
 import cn.tacomall.tacomallspringbootutils.ObjectUtil;
 import cn.tacomall.tacomallspringbootutils.JwtUtil;
@@ -90,7 +90,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
 
     @Override
     public Object synopsis() {
-        return baseMapper.getUserSynopsis(RequestUser.get().getString("id"));
+        return baseMapper.getUserSynopsis(RequestUserUtil.get().getString("id"));
     }
 
 }
