@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootsecurity.annotation;
+package cn.tacomall.tacomallspringbootsecurity.jwt.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

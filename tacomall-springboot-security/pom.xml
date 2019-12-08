@@ -26,6 +26,11 @@
             <artifactId>tacomall-springboot-utils</artifactId>
             <version>${tacomallspringboot.utils.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-spring</artifactId>
+            <version>${shirospring.version}</version>
+        </dependency>
     </dependencies>
 
 

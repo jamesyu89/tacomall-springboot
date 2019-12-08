@@ -10,8 +10,8 @@ import io.swagger.annotations.*;
 import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootutils.RequestUtil;
 import cn.tacomall.tacomallspringbootutils.ResponseUtil;
-import cn.tacomall.tacomallspringbootsecurity.annotation.IgnoreAuth;
-import cn.tacomall.tacomallspringbootsecurity.annotation.RequireAuth;
+import cn.tacomall.tacomallspringbootsecurity.jwt.annotation.IgnoreAuth;
+import cn.tacomall.tacomallspringbootsecurity.jwt.annotation.RequireAuth;
 import cn.tacomall.tacomallspringbootapiportal.service.user.*;
 
 @Api(tags = "用户模块")

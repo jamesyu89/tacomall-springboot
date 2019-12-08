@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootsecurity.utils;
+package cn.tacomall.tacomallspringbootsecurity.jwt.utils;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -22,7 +22,7 @@ import io.swagger.annotations.*;
 import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootutils.RequestUtil;
 import cn.tacomall.tacomallspringbootutils.ResponseUtil;
-import cn.tacomall.tacomallspringbootsecurity.annotation.IgnoreAuth;
+import cn.tacomall.tacomallspringbootsecurity.jwt.annotation.IgnoreAuth;
 
 /**
  * @author: running-cat
