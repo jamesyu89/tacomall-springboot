@@ -50,6 +50,7 @@
         <aliyun.oss.version>2.4.0</aliyun.oss.version>
         <commons.fileupload.version>1.3.1</commons.fileupload.version>
         <shirospring.version>1.4.0</shirospring.version>
+        <baomidou.mybatisplusgenerator.version>3.3.0</baomidou.mybatisplusgenerator.version>
     </properties>
 
     <dependencies>
