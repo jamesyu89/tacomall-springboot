@@ -11,7 +11,7 @@ import java.util.List;
 
 @Repository
 public interface StoreMapper extends BaseMapper<Store> {
-    StoreRole getRole();
+    StoreRole getRole(int id);
 
-    List<StorePermission> getPermission();
+    List<StorePermission> getPermission(int id);
 }

@@ -6,7 +6,7 @@ import cn.tacomall.tacomallspringbootentity.store.Store;
 
 public interface StoreService extends IService<Store> {
 
-    String login() throws Exception;
+    String login(String username, String password) throws Exception;
 
     String logout();
 }

@@ -24,9 +24,9 @@ public class MyShiroRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         Store store = (Store) principal.getPrimaryPrincipal();
         try {
-            authorizationInfo.addRole(storeMapper.getRole().getName());
+            authorizationInfo.addRole(storeMapper.getRole(store.getId()).getName());
 
-            List<StorePermission> permissions = storeMapper.getPermission();
+            List<StorePermission> permissions = storeMapper.getPermission(store.getId());
             for (StorePermission permission : permissions) {
                 authorizationInfo.addStringPermission(permission.getName());
             }

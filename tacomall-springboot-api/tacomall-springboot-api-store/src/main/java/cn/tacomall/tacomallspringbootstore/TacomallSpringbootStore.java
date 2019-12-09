@@ -9,7 +9,8 @@ import org.mybatis.spring.annotation.MapperScan;
         "cn.tacomall.tacomallspringbootcommon",
         "cn.tacomall.tacomallspringbootentity",
         "cn.tacomall.tacomallspringbootmapper",
-        "cn.tacomall.tacomallspringbootsecurity.shiro"
+        "cn.tacomall.tacomallspringbootsecurity.shiro",
+        "cn.tacomall.tacomallspringbootstore"
 })
 @MapperScan("cn.tacomall.tacomallspringbootmapper")
 public class TacomallSpringbootStore {

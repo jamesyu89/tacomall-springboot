@@ -24,26 +24,9 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
         Map filterChainDefinitionMap = new LinkedHashMap();
-        //注意过滤器配置顺序 不能颠倒
-        //配置退出 过滤器,其中的具体的退出代码Shiro已经替我们实现了，登出后跳转配置的loginUrl
-        //filterChainDefinitionMap.put("/logout", "logout");
-        // 配置不会被拦截的链接 顺序判断
-        filterChainDefinitionMap.put("/druid/**", "anon");
-        filterChainDefinitionMap.put("/swagger-ui.html", "anon");
-        filterChainDefinitionMap.put("/swagger-resources", "anon");
-        filterChainDefinitionMap.put("/swagger-resources/configuration/security", "anon");
-        filterChainDefinitionMap.put("/swagger-resources/configuration/ui", "anon");
-        filterChainDefinitionMap.put("/v2/api-docs", "anon");
-        filterChainDefinitionMap.put("/webjars/springfox-swagger-ui/**", "anon");
-        filterChainDefinitionMap.put("/static/**", "anon");
-        filterChainDefinitionMap.put("/login", "anon");
-        //filterChainDefinitionMap.put("/**", "authc");
+        filterChainDefinitionMap.put("/store/index/login", "anon");
         filterChainDefinitionMap.put("/**", "corsAuthenticationFilter");
-        //配置shiro默认登录界面地址，前后端分离中登录界面跳转应由前端路由控制，后台仅返回json数据
-        //shiroFilterFactoryBean.setLoginUrl("/unauth");
-        //shiroFilterFactoryBean.setUnauthorizedUrl("/unauthorized");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-        //自定义过滤器
         Map<String, Filter> filterMap = new LinkedHashMap<>();
         filterMap.put("corsAuthenticationFilter", corsAuthenticationFilter());
         shiroFilterFactoryBean.setFilters(filterMap);
@@ -65,7 +48,6 @@ public class ShiroConfig {
 
     @Bean
     public SessionManager sessionManager() {
-        System.out.println("******sessionManager()");
         return new MySessionManager();
     }
 
@@ -73,13 +55,6 @@ public class ShiroConfig {
         return new CORSAuthenticationFilter();
     }
 
-    /**
-     * 开启shiro aop注解支持.
-     * 使用代理方式;所以需要开启代码支持;
-     *
-     * @param securityManager
-     * @return
-     */
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
@@ -87,11 +62,6 @@ public class ShiroConfig {
         return authorizationAttributeSourceAdvisor;
     }
 
-    /**
-     * 注册全局异常处理
-     *
-     * @return
-     */
     @Bean(name = "exceptionHandler")
     public HandlerExceptionResolver handlerExceptionResolver() {
         return new MyExceptionHandler();

@@ -1,5 +1,6 @@
 package cn.tacomall.tacomallspringbootstore.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,14 +9,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootutils.RequestUtil;
 import cn.tacomall.tacomallspringbootutils.ResponseUtil;
+import cn.tacomall.tacomallspringbootstore.service.store.StoreService;
 
 @RestController
 @RequestMapping(value = "/store/index/")
 public class Index {
 
-    @PostMapping("index")
-    public ResponseDto index(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
-        String code = jsonRequest.getStr("code");
-        return responseUtil.success(code); // 返回ResponseDto对象
+    @Autowired
+    private StoreService storeService;
+
+    @PostMapping("login")
+    public ResponseDto login(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
+        String username = jsonRequest.getStr("username");
+        String password = jsonRequest.getStr("password");
+        storeService.login(username, password);
+        return responseUtil.success();
     }
 }
