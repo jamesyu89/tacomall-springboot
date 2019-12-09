@@ -1,42 +1,34 @@
-package cn.tacomall.tacomallspringbootsecurity.shiro;
+package cn.tacomall.tacomallspringbootstore.shiro;
 
 import java.util.List;
 
-import com.iterge.entity.SysPermission;
-import com.iterge.entity.SysRole;
-import com.iterge.entity.User;
-import com.iterge.service.SysPermissionService;
-import com.iterge.service.SysRoleService;
-import com.iterge.service.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
-public class Realm extends AuthorizingRealm {
+import cn.tacomall.tacomallspringbootentity.store.Store;
+import cn.tacomall.tacomallspringbootentity.store.StorePermission;
+import cn.tacomall.tacomallspringbootmapper.store.StoreMapper;
+
+public class MyShiroRealm extends AuthorizingRealm {
     @Autowired
-    private UserService userService;
-    @Autowired
-    private SysRoleService sysRoleService;
-    @Autowired
-    private SysPermissionService sysPermissionService;
+    private StoreMapper storeMapper;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principal) {
         System.out.println("权限认证");
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        User user = (User) principal.getPrimaryPrincipal();
-        System.out.println("**********" + user.toString());
+        Store store = (Store) principal.getPrimaryPrincipal();
         try {
-            List<SysRole> roles = sysRoleService.selectByUid(user.getUid());
-            for (SysRole role : roles) {
-                authorizationInfo.addRole(role.getRolename());
-            }
-            List<SysPermission> permissions = sysPermissionService.selectByUid(user.getUid());
-            for (SysPermission permission : permissions) {
-                authorizationInfo.addStringPermission(permission.getPername());
+            authorizationInfo.addRole(storeMapper.getRole().getName());
+
+            List<StorePermission> permissions = storeMapper.getPermission();
+            for (StorePermission permission : permissions) {
+                authorizationInfo.addStringPermission(permission.getName());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -50,16 +42,19 @@ public class Realm extends AuthorizingRealm {
         //获取用户账号和密码
         System.out.println("用户认证");
         String username = (String) authenticationToken.getPrincipal();
-        User user = userService.login(username);
-        if (user == null) {
+        Store store = storeMapper
+                .selectOne(new QueryWrapper<Store>()
+                        .lambda()
+                        .eq(Store::getUsername, username));
+        if (store == null) {
             return null;
         }
-        if (user.getStatus() == 1) { //账户冻结
+        if (store.getStatus() == 1) {
             throw new LockedAccountException();
         }
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                user,//安全数据
-                user.getPassword(),//
+                store,//安全数据
+                store.getPassword(),//
                 getName()
         );
         return authenticationInfo;

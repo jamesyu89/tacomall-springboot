@@ -1,4 +1,8 @@
-package cn.tacomall.tacomallspringbootsecurity.shiro.config;
+package cn.tacomall.tacomallspringbootstore.config;
+
+import javax.servlet.Filter;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
@@ -9,9 +13,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
-import javax.servlet.Filter;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import cn.tacomall.tacomallspringbootstore.shiro.*;
+import cn.tacomall.tacomallspringbootsecurity.shiro.*;
 
 @Configuration
 public class ShiroConfig {

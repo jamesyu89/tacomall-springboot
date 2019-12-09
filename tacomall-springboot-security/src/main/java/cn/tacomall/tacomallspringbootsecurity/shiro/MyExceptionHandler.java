@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootsecurity.shiro.exceptionimpl;
+package cn.tacomall.tacomallspringbootsecurity.shiro;
 
 import com.alibaba.fastjson.support.spring.FastJsonJsonView;
 import org.apache.shiro.authz.UnauthenticatedException;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class ExceptionImpl implements HandlerExceptionResolver {
+public class MyExceptionHandler implements HandlerExceptionResolver {
 
     public ModelAndView resolveException(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, Exception ex) {
         ModelAndView mv = new ModelAndView();

@@ -1,9 +1,5 @@
 package cn.tacomall.tacomallspringbootsecurity.shiro;
 
-import com.alibaba.fastjson.JSON;
-import com.iterge.entity.Result;
-import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
-
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.PrintWriter;
 import java.util.HashMap;
 import java.util.Map;
+
+import com.alibaba.fastjson.JSON;
+import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 
 public class CORSAuthenticationFilter extends FormAuthenticationFilter {
     public CORSAuthenticationFilter() {
@@ -37,8 +36,8 @@ public class CORSAuthenticationFilter extends FormAuthenticationFilter {
         res.setContentType("text/html; charset=utf-8");
         PrintWriter writer = res.getWriter();
         Map map = new HashMap();
-        map.put("code", Result.NOTLOGIN.getCode());
-        map.put("msg", Result.NOTLOGIN.getMsg());
+        map.put("code", 100);
+        map.put("msg", 100);
         writer.write(JSON.toJSONString(map));
         writer.close();
         return false;
