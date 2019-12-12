@@ -1,3 +1,6 @@
+server:
+  port: 5001
+
 spring:
   data:
     elasticsearch:

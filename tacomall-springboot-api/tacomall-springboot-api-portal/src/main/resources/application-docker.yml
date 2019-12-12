@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    dynamic:
+      primary: master
+      datasource:
+        master:
+          username: root
+          password: root
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://tacomall-mysql-master:3306/tacomall-master?serverTimezone=Asia/Shanghai
+        slave_1:
+          username: root
+          password: root
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://tacomall-mysql-slave:3306/tacomall-slave?serverTimezone=Asia/Shanghai
