@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootstore.shiro;
+package cn.tacomall.tacomallspringbootapistore.shiro;
 
 import java.util.List;
 

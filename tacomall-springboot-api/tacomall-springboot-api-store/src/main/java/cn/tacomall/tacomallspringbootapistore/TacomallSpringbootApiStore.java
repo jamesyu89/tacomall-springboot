@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootstore;
+package cn.tacomall.tacomallspringbootapistore;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,11 +10,11 @@ import org.mybatis.spring.annotation.MapperScan;
         "cn.tacomall.tacomallspringbootentity",
         "cn.tacomall.tacomallspringbootmapper",
         "cn.tacomall.tacomallspringbootsecurity.shiro",
-        "cn.tacomall.tacomallspringbootstore"
+        "cn.tacomall.tacomallspringbootapistore"
 })
 @MapperScan("cn.tacomall.tacomallspringbootmapper")
-public class TacomallSpringbootStore {
+public class TacomallSpringbootApiStore {
     public static void main(String[] args) {
-        SpringApplication.run(TacomallSpringbootStore.class, args);
+        SpringApplication.run(TacomallSpringbootApiStore.class, args);
     }
 }

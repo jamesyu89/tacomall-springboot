@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootstore.service.store;
+package cn.tacomall.tacomallspringbootapistore.service.store;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 

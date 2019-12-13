@@ -1,0 +1,97 @@
+version: '3'
+services:
+  tacomall-springboot-nginx:
+    container_name: tacomall-springboot-nginx
+    image: nginx:1.13
+    restart: always
+    ports:
+      - 4000:80
+      - 4001:443
+    volumes:
+      - ./tacomall-springboot/conf.d:/etc/nginx/conf.d
+
+  tacomall-springboot-mysql-master:
+    container_name: tacomall-springboot-mysql-master
+    image: mysql/mysql-server:5.7
+    environment:
+      MYSQL_DATABASE: tacomall
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 4002:3306
+    restart: always
+
+  tacomall-springboot-mysql-slave:
+    container_name: tacomall-springboot-mysql-slave
+    image: mysql/mysql-server:5.7
+    environment:
+      MYSQL_DATABASE: tacomall
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 4003:3306
+    restart: always
+
+  tacomall-springboot-api-portal:
+    container_name: tacomall-springboot-api-portal
+    restart: always
+    build: ./tacomall-springboot-api-portal
+    working_dir: /app
+    volumes:
+      - ../tacomall-springboot-api/tacomall-springboot-api-portal:/app
+      - ~/.m2:/root/.m2
+    expose:
+      - "4000"
+    depends_on:
+      - tacomall-springboot-nginx
+      - tacomall-springboot-mysql-master
+      - tacomall-springboot-mysql-slave
+    command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
+
+  tacomall-springboot-api-store:
+    container_name: tacomall-springboot-api-store
+    restart: always
+    build: ./tacomall-springboot-api-store
+    working_dir: /app
+    volumes:
+      - ../tacomall-springboot-api/tacomall-springboot-api-store:/app
+      - ~/.m2:/root/.m2
+    expose:
+      - "4001"
+    depends_on:
+      - tacomall-springboot-nginx
+      - tacomall-springboot-mysql-master
+      - tacomall-springboot-mysql-slave
+    command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
+
+  tacomall-springboot-provider-weixin:
+    container_name: tacomall-springboot-provider-weixin
+    restart: always
+    build: ./tacomall-springboot-provider-weixin
+    working_dir: /app
+    volumes:
+      - ../tacomall-springboot-provider/tacomall-springboot-provider-weixin:/app
+      - ~/.m2:/root/.m2
+    expose:
+      - "5000"
+    depends_on:
+      - tacomall-springboot-nginx
+      - tacomall-springboot-mysql-master
+      - tacomall-springboot-mysql-slave
+    command: mvn clean spring-boot:run
+
+  tacomall-springboot-provider-search:
+    container_name: tacomall-springboot-provider-search
+    restart: always
+    build: ./tacomall-springboot-provider-search
+    working_dir: /app
+    volumes:
+      - ../tacomall-springboot-provider/tacomall-springboot-provider-search:/app
+      - ~/.m2:/root/.m2
+    expose:
+      - "5001"
+    depends_on:
+      - tacomall-springboot-nginx
+      - tacomall-springboot-mysql-master
+      - tacomall-springboot-mysql-slave
+    command: mvn clean spring-boot:run
