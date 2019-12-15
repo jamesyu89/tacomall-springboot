@@ -16,11 +16,23 @@
         <module>tacomall-springboot-utils</module>
         <module>tacomall-springboot-entity</module>
         <module>tacomall-springboot-mapper</module>
-        <module>tacomall-springboot-api</module>
-        <module>tacomall-springboot-provider</module>
+        <module>tacomall-springboot-api/tacomall-springboot-api-admin</module>
+        <module>tacomall-springboot-api/tacomall-springboot-api-portal</module>
+        <module>tacomall-springboot-api/tacomall-springboot-api-store</module>
+        <module>tacomall-springboot-provider/tacomall-springboot-provider-search</module>
+        <module>tacomall-springboot-provider/tacomall-springboot-provider-store</module>
+        <module>tacomall-springboot-provider/tacomall-springboot-provider-weixin</module>
+        <module>tacomall-springboot-provider/tacomall-springboot-provider-msg</module>
         <module>tacomall-springboot-security</module>
         <module>tacomall-springboot-generator</module>
     </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.7.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
     <packaging>pom</packaging>
 
@@ -28,6 +40,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <docker.image.prefix>tacomall-springboot</docker.image.prefix>
+        <dockermavenplugin.verion>1.0.0</dockermavenplugin.verion>
         <mavencompilerplugin.version>3.1</mavencompilerplugin.version>
         <mavensurefireplugin.version>2.19</mavensurefireplugin.version>
         <springbootmavenplugin.version>2.0.1.RELEASE</springbootmavenplugin.version>

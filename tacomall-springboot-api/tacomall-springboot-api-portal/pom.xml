@@ -3,10 +3,12 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>tacomall-springboot-api</artifactId>
+        <artifactId>tacomall-springboot</artifactId>
         <groupId>cn.tacomall</groupId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>tacomall-springboot-api-portal</artifactId>
@@ -14,6 +16,37 @@
     <packaging>jar</packaging>
 
     <version>1.0-SNAPSHOT</version>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.tacomall</groupId>
+            <artifactId>tacomall-springboot-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.tacomall</groupId>
+            <artifactId>tacomall-springboot-utils</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.tacomall</groupId>
+            <artifactId>tacomall-springboot-mapper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.tacomall</groupId>
+            <artifactId>tacomall-springboot-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>
@@ -28,6 +61,22 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>${dockermavenplugin.verion}</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -8,7 +8,7 @@ services:
       - 4000:80
       - 4001:443
     volumes:
-      - ./tacomall-springboot/conf.d:/etc/nginx/conf.d
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
 
   tacomall-springboot-mysql-master:
     container_name: tacomall-springboot-mysql-master
@@ -33,61 +33,45 @@ services:
     restart: always
 
   tacomall-springboot-api-portal:
+    image: tacomall-springboot/tacomall-springboot-api-portal
     container_name: tacomall-springboot-api-portal
     restart: always
-    build: ./tacomall-springboot-api-portal
-    working_dir: /app
-    volumes:
-      - ../tacomall-springboot-api/tacomall-springboot-api-portal:/app
-      - ~/.m2:/root/.m2
     expose:
       - "4000"
     depends_on:
       - tacomall-springboot-nginx
       - tacomall-springboot-mysql-master
       - tacomall-springboot-mysql-slave
-    command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
+    command: spring-boot:run -Dspring-boot.run.profiles=docker
 
   tacomall-springboot-api-store:
+    image: tacomall-springboot/tacomall-springboot-api-store
     container_name: tacomall-springboot-api-store
     restart: always
-    build: ./tacomall-springboot-api-store
-    working_dir: /app
-    volumes:
-      - ../tacomall-springboot-api/tacomall-springboot-api-store:/app
-      - ~/.m2:/root/.m2
     expose:
       - "4001"
     depends_on:
       - tacomall-springboot-nginx
       - tacomall-springboot-mysql-master
       - tacomall-springboot-mysql-slave
-    command: mvn clean spring-boot:run -Dspring-boot.run.profiles=docker
+    command: spring-boot:run -Dspring-boot.run.profiles=docker
 
   tacomall-springboot-provider-weixin:
+    image: tacomall-springboot/tacomall-springboot-provider-weixin
     container_name: tacomall-springboot-provider-weixin
     restart: always
-    build: ./tacomall-springboot-provider-weixin
-    working_dir: /app
-    volumes:
-      - ../tacomall-springboot-provider/tacomall-springboot-provider-weixin:/app
-      - ~/.m2:/root/.m2
     expose:
       - "5000"
     depends_on:
       - tacomall-springboot-nginx
       - tacomall-springboot-mysql-master
       - tacomall-springboot-mysql-slave
-    command: mvn clean spring-boot:run
+    command: spring-boot:run
 
   tacomall-springboot-provider-search:
+    image: tacomall-springboot/tacomall-springboot-provider-search
     container_name: tacomall-springboot-provider-search
     restart: always
-    build: ./tacomall-springboot-provider-search
-    working_dir: /app
-    volumes:
-      - ../tacomall-springboot-provider/tacomall-springboot-provider-search:/app
-      - ~/.m2:/root/.m2
     expose:
       - "5001"
     depends_on:
