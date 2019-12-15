@@ -2,11 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>cn.tacomall</groupId>
+
     <artifactId>tacomall-springboot</artifactId>
+
     <version>1.0-SNAPSHOT</version>
+
     <modules>
         <module>tacomall-springboot-common</module>
         <module>tacomall-springboot-utils</module>
@@ -20,26 +24,27 @@
 
     <packaging>pom</packaging>
 
-    <!--定义属性值-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <tacomallspringboot.common.version>1.0.0</tacomallspringboot.common.version>
-        <tacomallspringboot.utils.version>1.0.0</tacomallspringboot.utils.version>
-        <tacomallspringboot.entity.version>1.0.0</tacomallspringboot.entity.version>
-        <tacomallspringboot.mapper.version>1.0.0</tacomallspringboot.mapper.version>
-        <tacomallspringboot.provider.weixin.version>1.0.0</tacomallspringboot.provider.weixin.version>
-        <tacomallspringboot.provider.store.version>1.0.0</tacomallspringboot.provider.store.version>
-        <tacomallspringboot.provider.search.version>1.0.0</tacomallspringboot.provider.search.version>
-        <tacomallspringboot.provider.msg.version>1.0.0</tacomallspringboot.provider.msg.version>
-        <tacomallspringboot.security.version>1.00</tacomallspringboot.security.version>
-        <tacomallspringboot.api.admin.version>1.0.0</tacomallspringboot.api.admin.version>
-        <tacomallspringboot.api.portal.version>1.0.0</tacomallspringboot.api.portal.version>
-        <tacomallspringboot.api.store.version>1.0.0</tacomallspringboot.api.store.version>
-        <spring.boot.version>2.1.1.RELEASE</spring.boot.version>
+        <mavencompilerplugin.version>3.1</mavencompilerplugin.version>
+        <mavensurefireplugin.version>2.19</mavensurefireplugin.version>
+        <springbootmavenplugin.version>2.0.1.RELEASE</springbootmavenplugin.version>
+        <tacomallspringboot.common.version>1.0-SNAPSHOT</tacomallspringboot.common.version>
+        <tacomallspringboot.utils.version>1.0-SNAPSHOT</tacomallspringboot.utils.version>
+        <tacomallspringboot.entity.version>1.0-SNAPSHOT</tacomallspringboot.entity.version>
+        <tacomallspringboot.mapper.version>1.0-SNAPSHOT</tacomallspringboot.mapper.version>
+        <tacomallspringboot.security.version>1.0-SNAPSHOT</tacomallspringboot.security.version>
+        <tacomallspringboot.generator.version>1.0-SNAPSHOT</tacomallspringboot.generator.version>
+        <tacomallspringboot.provider.weixin.version>1.0-SNAPSHOT</tacomallspringboot.provider.weixin.version>
+        <tacomallspringboot.provider.store.version>1.0-SNAPSHOT</tacomallspringboot.provider.store.version>
+        <tacomallspringboot.provider.search.version>1.0-SNAPSHOT</tacomallspringboot.provider.search.version>
+        <tacomallspringboot.provider.msg.version>1.0-SNAPSHOT</tacomallspringboot.provider.msg.version>
+        <spring.boot.version>2.1.7.RELEASE</spring.boot.version>
         <mybatisplus.boot.starter.version>3.1.0</mybatisplus.boot.starter.version>
         <fastjson.version>1.2.58</fastjson.version>
+        <lombok.version>1.16.20</lombok.version>
         <javajwt.version>3.4.0</javajwt.version>
         <joda.time.version>2.9.9</joda.time.version>
         <springfox.swagger2.version>2.9.2</springfox.swagger2.version>
@@ -54,7 +59,6 @@
     </properties>
 
     <dependencies>
-        <!--测试依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -62,17 +66,125 @@
         </dependency>
     </dependencies>
 
-    <!-- 依赖声明 -->
     <dependencyManagement>
         <dependencies>
-
-            <!-- SpringBoot的依赖配置-->
+            <dependency>
+                <groupId>cn.tacomall</groupId>
+                <artifactId>tacomall-springboot-common</artifactId>
+                <version>${tacomallspringboot.common.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.tacomall</groupId>
+                <artifactId>tacomall-springboot-utils</artifactId>
+                <version>${tacomallspringboot.utils.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.tacomall</groupId>
+                <artifactId>tacomall-springboot-entity</artifactId>
+                <version>${tacomallspringboot.entity.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.tacomall</groupId>
+                <artifactId>tacomall-springboot-mapper</artifactId>
+                <version>${tacomallspringboot.mapper.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.tacomall</groupId>
+                <artifactId>tacomall-springboot-security</artifactId>
+                <version>${tacomallspringboot.security.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.tacomall</groupId>
+                <artifactId>tacomall-springboot-provider-weixin</artifactId>
+                <version>${tacomallspringboot.provider.weixin.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.tacomall</groupId>
+                <artifactId>tacomall-springboot-provider-search</artifactId>
+                <version>${tacomallspringboot.provider.search.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.tacomall</groupId>
+                <artifactId>tacomall-springboot-provider-store</artifactId>
+                <version>${tacomallspringboot.provider.store.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>cn.tacomall</groupId>
+                <artifactId>tacomall-springboot-provider-msg</artifactId>
+                <version>${tacomallspringboot.provider.msg.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring.boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>${javajwt.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda.time.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>${mybatisplus.boot.starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>${mysql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${baomidou.dynamicdatasource.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.shiro</groupId>
+                <artifactId>shiro-spring</artifactId>
+                <version>${shirospring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-generator</artifactId>
+                <version>${baomidou.mybatisplusgenerator.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-miniapp</artifactId>
+                <version>${binarywang.weixinjavaminiapp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun.oss.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${springfox.swagger2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${springfox.swagger.ui.version}</version>
             </dependency>
 
         </dependencies>
@@ -83,6 +195,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <version>${mavencompilerplugin.version}</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -92,6 +205,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
+                <version>${mavensurefireplugin.version}</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>

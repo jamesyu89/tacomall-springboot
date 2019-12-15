@@ -11,13 +11,14 @@
 
     <packaging>jar</packaging>
 
+    <version>1.0-SNAPSHOT</version>
+
     <artifactId>tacomall-springboot-generator</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-generator</artifactId>
-            <version>${baomidou.mybatisplusgenerator.version}</version>
         </dependency>
     </dependencies>
 

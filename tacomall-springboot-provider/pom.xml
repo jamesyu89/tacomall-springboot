@@ -14,7 +14,7 @@
 
     <packaging>pom</packaging>
 
-    <version>1.0.0</version>
+    <version>1.0-SNAPSHOT</version>
 
     <modules>
         <module>tacomall-springboot-provider-store</module>
@@ -27,17 +27,14 @@
         <dependency>
             <groupId>cn.tacomall</groupId>
             <artifactId>tacomall-springboot-common</artifactId>
-            <version>${tacomallspringboot.common.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.tacomall</groupId>
             <artifactId>tacomall-springboot-utils</artifactId>
-            <version>${tacomallspringboot.utils.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.tacomall</groupId>
             <artifactId>tacomall-springboot-entity</artifactId>
-            <version>${tacomallspringboot.entity.version}</version>
         </dependency>
     </dependencies>
 

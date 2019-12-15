@@ -13,7 +13,7 @@
 
     <packaging>pom</packaging>
 
-    <version>1.0.0</version>
+    <version>1.0-SNAPSHOT</version>
 
 
     <modules>
@@ -26,43 +26,52 @@
         <dependency>
             <groupId>cn.tacomall</groupId>
             <artifactId>tacomall-springboot-common</artifactId>
-            <version>${tacomallspringboot.common.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.tacomall</groupId>
             <artifactId>tacomall-springboot-utils</artifactId>
-            <version>${tacomallspringboot.utils.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.tacomall</groupId>
             <artifactId>tacomall-springboot-mapper</artifactId>
-            <version>${tacomallspringboot.mapper.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.tacomall</groupId>
             <artifactId>tacomall-springboot-provider-weixin</artifactId>
-            <version>${tacomallspringboot.provider.weixin.version}</version>
         </dependency>
         <dependency>
             <groupId>cn.tacomall</groupId>
             <artifactId>tacomall-springboot-security</artifactId>
-            <version>${tacomallspringboot.security.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox.swagger2.version}</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>${springfox.swagger.ui.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${springbootmavenplugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -13,23 +13,20 @@
 
     <packaging>jar</packaging>
 
-    <version>${tacomallspringboot.mapper.version}</version>
+    <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
             <groupId>cn.tacomall</groupId>
             <artifactId>tacomall-springboot-entity</artifactId>
-            <version>${tacomallspringboot.entity.version}</version>
         </dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>${mysql.version}</version>
         </dependency>
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
-            <version>${baomidou.dynamicdatasource.version}</version>
         </dependency>
     </dependencies>
 

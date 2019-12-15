@@ -5,7 +5,7 @@
     <parent>
         <artifactId>tacomall-springboot-provider</artifactId>
         <groupId>cn.tacomall</groupId>
-        <version>1.0.0</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,18 +13,16 @@
 
     <packaging>jar</packaging>
 
-    <version>${tacomallspringboot.provider.weixin.version}</version>
+    <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
             <groupId>com.github.binarywang</groupId>
             <artifactId>weixin-java-miniapp</artifactId>
-            <version>${binarywang.weixinjavaminiapp.version}</version>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -33,6 +31,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${springbootmavenplugin.version}</version>
                 <executions>
                     <execution>
                         <goals>

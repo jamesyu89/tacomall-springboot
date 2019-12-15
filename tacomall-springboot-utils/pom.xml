@@ -13,28 +13,24 @@
 
     <packaging>jar</packaging>
 
-    <version>${tacomallspringboot.utils.version}</version>
+    <version>1.0-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
             <groupId>cn.tacomall</groupId>
             <artifactId>tacomall-springboot-common</artifactId>
-            <version>${tacomallspringboot.common.version}</version>
         </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>${fastjson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.auth0</groupId>
             <artifactId>java-jwt</artifactId>
-            <version>${javajwt.version}</version>
         </dependency>
         <dependency>
             <groupId>joda-time</groupId>
             <artifactId>joda-time</artifactId>
-            <version>${joda.time.version}</version>
         </dependency>
     </dependencies>
 

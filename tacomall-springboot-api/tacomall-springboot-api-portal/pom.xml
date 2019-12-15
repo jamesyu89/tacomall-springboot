@@ -5,7 +5,7 @@
     <parent>
         <artifactId>tacomall-springboot-api</artifactId>
         <groupId>cn.tacomall</groupId>
-        <version>1.0.0</version>
+        <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -13,13 +13,14 @@
 
     <packaging>jar</packaging>
 
-    <version>${tacomallspringboot.api.portal.version}</version>
+    <version>1.0-SNAPSHOT</version>
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${springbootmavenplugin.version}</version>
                 <executions>
                     <execution>
                         <goals>
