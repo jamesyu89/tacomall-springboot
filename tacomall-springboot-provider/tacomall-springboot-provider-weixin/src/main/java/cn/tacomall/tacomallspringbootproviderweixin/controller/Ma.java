@@ -9,9 +9,9 @@ import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import cn.binarywang.wx.miniapp.bean.WxMaUserInfo;
 import me.chanjar.weixin.common.error.WxErrorException;
 
-import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootutils.RequestUtil;
 import cn.tacomall.tacomallspringbootutils.ResponseUtil;
+import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootproviderweixin.config.MaConfig;
 
 

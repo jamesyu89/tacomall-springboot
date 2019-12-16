@@ -13,16 +13,18 @@
 
 package cn.tacomall.tacomallspringbootapiportal.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 import io.swagger.annotations.*;
 
-import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootutils.RequestUtil;
 import cn.tacomall.tacomallspringbootutils.ResponseUtil;
 import cn.tacomall.tacomallspringbootsecurity.jwt.annotation.IgnoreAuth;
+import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 
 /**
  * @author: running-cat
@@ -36,6 +38,8 @@ import cn.tacomall.tacomallspringbootsecurity.jwt.annotation.IgnoreAuth;
 @RestController
 @RequestMapping(value = "/portal/index/")
 public class Index {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**
      * @author: running-cat
@@ -58,6 +62,7 @@ public class Index {
          * 无则抛出ClientException
          */
         String code = jsonRequest.getStr("code");
+        this.logger.info("index域index模块index方法");
         return responseUtil.success(code); // 返回ResponseDto对象
     }
 }

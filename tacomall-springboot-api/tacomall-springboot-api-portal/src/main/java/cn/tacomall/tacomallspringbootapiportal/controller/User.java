@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import io.swagger.annotations.*;
 
-import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootutils.RequestUtil;
 import cn.tacomall.tacomallspringbootutils.ResponseUtil;
 import cn.tacomall.tacomallspringbootsecurity.jwt.annotation.IgnoreAuth;
 import cn.tacomall.tacomallspringbootsecurity.jwt.annotation.RequireAuth;
+import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootapiportal.service.user.*;
 
 @Api(tags = "用户模块")

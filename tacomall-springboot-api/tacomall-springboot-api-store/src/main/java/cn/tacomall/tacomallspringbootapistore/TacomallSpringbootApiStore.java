@@ -6,10 +6,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication(scanBasePackages = {
-        "cn.tacomall.tacomallspringbootcommon",
         "cn.tacomall.tacomallspringbootentity",
         "cn.tacomall.tacomallspringbootmapper",
         "cn.tacomall.tacomallspringbootsecurity.shiro",
+        "cn.tacomall.tacomallspringbootcommon",
+        "cn.tacomall.tacomallspringboottask",
         "cn.tacomall.tacomallspringbootapistore"
 })
 @MapperScan("cn.tacomall.tacomallspringbootmapper")

@@ -6,9 +6,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootutils.RequestUtil;
 import cn.tacomall.tacomallspringbootutils.ResponseUtil;
+import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
+import cn.tacomall.tacomallspringbootcommon.annotation.SysLogger;
 import cn.tacomall.tacomallspringbootapistore.service.store.StoreService;
 
 @RestController
@@ -18,6 +19,7 @@ public class Index {
     @Autowired
     private StoreService storeService;
 
+    @SysLogger("用户登录")
     @PostMapping("login")
     public ResponseDto login(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
         String username = jsonRequest.getStr("username");
