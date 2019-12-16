@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import cn.tacomall.tacomallspringbootutils.RequestUtil;
-import cn.tacomall.tacomallspringbootutils.ResponseUtil;
+import cn.tacomall.tacomallspringbootcommon.utils.RequestUtil;
+import cn.tacomall.tacomallspringbootcommon.utils.ResponseUtil;
 import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootcommon.annotation.SysLogger;
 import cn.tacomall.tacomallspringbootapistore.service.store.StoreService;

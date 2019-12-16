@@ -1,6 +1,8 @@
-package cn.tacomall.tacomallspringbootutils;
+package cn.tacomall.tacomallspringbootcommon.utils;
 
 import com.alibaba.fastjson.JSONObject;
+
+import cn.tacomall.tacomallspringbootutils.StringUtil;
 
 public class RequestUtil extends JSONObject {
 

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import cn.tacomall.tacomallspringbootutils.HttpRequestUtil;
+import cn.tacomall.tacomallspringbootcommon.utils.HttpRequestUtil;
 import cn.tacomall.tacomallspringbootapiportal.properties.WeixinMaProperties;
 
 @Component

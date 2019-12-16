@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootutils;
+package cn.tacomall.tacomallspringbootcommon.utils;
 
 import cn.tacomall.tacomallspringbootcommon.exception.*;
 

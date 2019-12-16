@@ -9,9 +9,9 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 
-import cn.tacomall.tacomallspringbootutils.JwtUtil;
+import cn.tacomall.tacomallspringbootcommon.utils.JwtUtil;
 import cn.tacomall.tacomallspringbootutils.StringUtil;
-import cn.tacomall.tacomallspringbootutils.ExceptionUtil;
+import cn.tacomall.tacomallspringbootcommon.utils.ExceptionUtil;
 import cn.tacomall.tacomallspringbootsecurity.jwt.annotation.*;
 
 public class AuthorizationInterceptor implements HandlerInterceptor {

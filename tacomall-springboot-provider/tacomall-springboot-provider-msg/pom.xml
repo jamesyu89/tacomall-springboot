@@ -20,14 +20,6 @@
     <dependencies>
         <dependency>
             <groupId>cn.tacomall</groupId>
-            <artifactId>tacomall-springboot-utils</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.tacomall</groupId>
-            <artifactId>tacomall-springboot-entity</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.tacomall</groupId>
             <artifactId>tacomall-springboot-common</artifactId>
         </dependency>
     </dependencies>

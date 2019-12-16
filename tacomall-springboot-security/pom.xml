@@ -19,7 +19,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.tacomall</groupId>
-            <artifactId>tacomall-springboot-utils</artifactId>
+            <artifactId>tacomall-springboot-common</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>

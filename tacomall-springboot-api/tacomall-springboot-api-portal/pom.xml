@@ -20,19 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>cn.tacomall</groupId>
-            <artifactId>tacomall-springboot-utils</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.tacomall</groupId>
-            <artifactId>tacomall-springboot-mapper</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.tacomall</groupId>
             <artifactId>tacomall-springboot-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.tacomall</groupId>
-            <artifactId>tacomall-springboot-common</artifactId>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>

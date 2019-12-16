@@ -1,13 +1,13 @@
-package cn.tacomall.tacomallspringbootutils;
+package cn.tacomall.tacomallspringbootcommon.utils;
 
-import java.util.Collections;
 import java.util.Map;
-import java.util.HashMap;
+import java.util.Collections;
 
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.TypeReference;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 public class HttpRequestUtil {

@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootutils;
+package cn.tacomall.tacomallspringbootcommon.utils;
 
 import java.util.Map;
 import java.util.HashMap;

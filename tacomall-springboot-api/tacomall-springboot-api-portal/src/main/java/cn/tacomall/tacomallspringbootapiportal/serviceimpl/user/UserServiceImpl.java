@@ -12,7 +12,6 @@ import org.springframework.transaction.TransactionDefinition;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import cn.tacomall.tacomallspringbootsecurity.jwt.utils.RequestUserUtil;
-import cn.tacomall.tacomallspringbootutils.ExceptionUtil;
 import cn.tacomall.tacomallspringbootutils.ObjectUtil;
 import cn.tacomall.tacomallspringbootutils.JwtUtil;
 import cn.tacomall.tacomallspringbootutils.IntUtil;
@@ -22,6 +21,7 @@ import cn.tacomall.tacomallspringbootentity.user.UserProfile;
 import cn.tacomall.tacomallspringbootmapper.user.UserProfileMapper;
 import cn.tacomall.tacomallspringbootentity.user.UserWeixin;
 import cn.tacomall.tacomallspringbootmapper.user.UserWeixinMapper;
+import cn.tacomall.tacomallspringbootcommon.utils.ExceptionUtil;
 import cn.tacomall.tacomallspringbootapiportal.service.user.UserService;
 import cn.tacomall.tacomallspringbootapiportal.provider.WeixinMaProvider;
 
