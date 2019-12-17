@@ -20,9 +20,9 @@
         <module>tacomall-springboot-generator</module>
         <module>tacomall-springboot-task</module>
         <module>tacomall-springboot-provider/tacomall-springboot-provider-search</module>
-        <module>tacomall-springboot-provider/tacomall-springboot-provider-store</module>
         <module>tacomall-springboot-provider/tacomall-springboot-provider-weixin</module>
         <module>tacomall-springboot-provider/tacomall-springboot-provider-msg</module>
+        <module>tacomall-springboot-provider/tacomall-springboot-provider-storage</module>
         <module>tacomall-springboot-api/tacomall-springboot-api-admin</module>
         <module>tacomall-springboot-api/tacomall-springboot-api-portal</module>
         <module>tacomall-springboot-api/tacomall-springboot-api-store</module>
@@ -46,17 +46,17 @@
         <mavencompilerplugin.version>3.1</mavencompilerplugin.version>
         <mavensurefireplugin.version>2.19</mavensurefireplugin.version>
         <springbootmavenplugin.version>2.0.1.RELEASE</springbootmavenplugin.version>
-        <tacomallspringboot.common.version>1.0-SNAPSHOT</tacomallspringboot.common.version>
         <tacomallspringboot.utils.version>1.0-SNAPSHOT</tacomallspringboot.utils.version>
         <tacomallspringboot.entity.version>1.0-SNAPSHOT</tacomallspringboot.entity.version>
         <tacomallspringboot.mapper.version>1.0-SNAPSHOT</tacomallspringboot.mapper.version>
+        <tacomallspringboot.common.version>1.0-SNAPSHOT</tacomallspringboot.common.version>
         <tacomallspringboot.security.version>1.0-SNAPSHOT</tacomallspringboot.security.version>
         <tacomallspringboot.generator.version>1.0-SNAPSHOT</tacomallspringboot.generator.version>
         <tacomallspringboot.task.version>1.0-SNAPSHOT</tacomallspringboot.task.version>
         <tacomallspringboot.provider.weixin.version>1.0-SNAPSHOT</tacomallspringboot.provider.weixin.version>
-        <tacomallspringboot.provider.store.version>1.0-SNAPSHOT</tacomallspringboot.provider.store.version>
         <tacomallspringboot.provider.search.version>1.0-SNAPSHOT</tacomallspringboot.provider.search.version>
         <tacomallspringboot.provider.msg.version>1.0-SNAPSHOT</tacomallspringboot.provider.msg.version>
+        <tacomallspringboot.provider.storage.version>1.0-SNAPSHOT</tacomallspringboot.provider.storage.version>
         <spring.boot.version>2.1.7.RELEASE</spring.boot.version>
         <mybatisplus.boot.starter.version>3.1.0</mybatisplus.boot.starter.version>
         <fastjson.version>1.2.58</fastjson.version>
@@ -127,13 +127,13 @@
             </dependency>
             <dependency>
                 <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-provider-store</artifactId>
-                <version>${tacomallspringboot.provider.store.version}</version>
+                <artifactId>tacomall-springboot-provider-msg</artifactId>
+                <version>${tacomallspringboot.provider.msg.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-provider-msg</artifactId>
-                <version>${tacomallspringboot.provider.msg.version}</version>
+                <artifactId>tacomall-springboot-provider-storage</artifactId>
+                <version>${tacomallspringboot.provider.storage.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>

@@ -1,0 +1,27 @@
+server:
+  port: 5002
+
+spring:
+  profiles:
+    active: dev
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+  resources:
+    static-locations: classpath:/
+  mvc:
+    static-path-pattern: /**
+
+mybatis-plus:
+  type-aliases-package: cn.tacomall.tacomallspringbootmapper
+  mapper-locations: classpath:/mapper/*Mapper.xml
+
+oss:
+  endPoint: oss-cn-shenzhen.aliyuncs.com
+  accesskey: LTAI4Fickf14NieXeJSAQxcH
+  accessSecret: 
+  bucket: mgteach-default
+  expire: 3600
+  host: mgteach-default.oss-cn-shenzhen.aliyuncs.com
