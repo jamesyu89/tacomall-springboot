@@ -13,10 +13,10 @@ import com.aliyun.oss.model.PolicyConditions;
 import org.springframework.stereotype.Service;
 
 import cn.tacomall.tacomallspringbootproviderstorage.config.OssConfig;
-import cn.tacomall.tacomallspringbootproviderstorage.service.SecurityService;
+import cn.tacomall.tacomallspringbootproviderstorage.service.OssService;
 
 @Service
-public class SecurityServiceImpl implements SecurityService {
+public class OssServiceImpl implements OssService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -39,7 +39,7 @@ public class SecurityServiceImpl implements SecurityService {
             map.put("accessKey", OssConfig.accessKey);
             map.put("dir", dir);
             map.put("expire", OssConfig.expire);
-            map.put("Host", OssConfig.expire);
+            map.put("host", OssConfig.host);
             map.put("policy", encodedPolicy);
             map.put("signature", postSignature);
         } catch (Exception e) {

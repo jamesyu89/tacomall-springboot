@@ -9,19 +9,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import cn.tacomall.tacomallspringbootcommon.utils.RequestUtil;
 import cn.tacomall.tacomallspringbootcommon.utils.ResponseUtil;
 import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
-import cn.tacomall.tacomallspringbootproviderstorage.service.SecurityService;
+import cn.tacomall.tacomallspringbootproviderstorage.service.OssService;
 
 @RestController
-@RequestMapping(value = "/provider/storage/security")
-public class Security {
+@RequestMapping(value = "/storage/oss")
+public class Oss {
 
     @Autowired
-    private SecurityService securityService;
+    private OssService ossService;
 
     @PostMapping("authorize")
     public ResponseDto authorize(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
         return responseUtil
-                .data(securityService.authorize(jsonRequest.getStr("dir")))
+                .data(ossService.authorize(jsonRequest.getStr("dir")))
+                .success();
+    }
+
+    @PostMapping("callback")
+    public ResponseDto callback(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
+        return responseUtil
                 .success();
     }
 }

@@ -9,10 +9,6 @@ spring:
     suffix: .html
     mode: HTML5
     encoding: UTF-8
-  resources:
-    static-locations: classpath:/
-  mvc:
-    static-path-pattern: /**
 
 mybatis-plus:
   type-aliases-package: cn.tacomall.tacomallspringbootmapper
@@ -21,7 +17,7 @@ mybatis-plus:
 oss:
   endPoint: oss-cn-shenzhen.aliyuncs.com
   accesskey: LTAI4Fickf14NieXeJSAQxcH
-  accessSecret: 
+  accessSecret:
   bucket: mgteach-default
   expire: 3600
   host: mgteach-default.oss-cn-shenzhen.aliyuncs.com

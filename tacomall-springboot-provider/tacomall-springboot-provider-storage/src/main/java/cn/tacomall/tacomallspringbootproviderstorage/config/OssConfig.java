@@ -20,12 +20,15 @@ public class OssConfig {
 
     public static Long expire;
 
+    public static String host;
+
     @Autowired
     public OssConfig(OssProperties properties) {
         endpoint = properties.getEndPoint();
         accessKey = properties.getAccesskey();
         accessSecret = properties.getAccessSecret();
         expire = properties.getExpire();
+        host = properties.getHost();
     }
 
 

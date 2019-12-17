@@ -17,4 +17,6 @@ public class OssProperties {
 
     private Long expire;
 
+    private String host;
+
 }
