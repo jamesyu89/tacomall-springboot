@@ -1,4 +1,4 @@
-# tacomall-uniapp
+# tacomall
 
 #### 关于tacomall-springboot
 基于springboot开发的maven多模块商城后台
