@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootapistore.controller;
+package cn.tacomall.tacomallspringbootapiadmin.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +10,7 @@ import cn.tacomall.tacomallspringbootcommon.utils.RequestUtil;
 import cn.tacomall.tacomallspringbootcommon.utils.ResponseUtil;
 import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootcommon.annotation.SysLogger;
-import cn.tacomall.tacomallspringbootapistore.service.store.StoreService;
+import cn.tacomall.tacomallspringbootapiadmin.service.store.StoreService;
 
 @RestController
 @RequestMapping(value = "/store/index/")

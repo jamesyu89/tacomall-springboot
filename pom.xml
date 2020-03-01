@@ -23,9 +23,8 @@
         <module>tacomall-springboot-provider/tacomall-springboot-provider-weixin</module>
         <module>tacomall-springboot-provider/tacomall-springboot-provider-msg</module>
         <module>tacomall-springboot-provider/tacomall-springboot-provider-storage</module>
-        <module>tacomall-springboot-api/tacomall-springboot-api-admin</module>
         <module>tacomall-springboot-api/tacomall-springboot-api-portal</module>
-        <module>tacomall-springboot-api/tacomall-springboot-api-store</module>
+        <module>tacomall-springboot-api/tacomall-springboot-api-admin</module>
     </modules>
 
     <parent>

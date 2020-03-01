@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootapistore.config;
+package cn.tacomall.tacomallspringbootapiadmin.config;
 
 import javax.servlet.Filter;
 import java.util.LinkedHashMap;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
-import cn.tacomall.tacomallspringbootapistore.shiro.*;
+import cn.tacomall.tacomallspringbootapiadmin.shiro.*;
 import cn.tacomall.tacomallspringbootsecurity.shiro.*;
 
 @Configuration

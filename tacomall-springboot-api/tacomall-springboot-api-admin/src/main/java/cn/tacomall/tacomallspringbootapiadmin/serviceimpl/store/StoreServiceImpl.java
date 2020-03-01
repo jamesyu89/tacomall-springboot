@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootapistore.serviceimpl.store;
+package cn.tacomall.tacomallspringbootapiadmin.serviceimpl.store;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import cn.tacomall.tacomallspringbootentity.store.Store;
 import cn.tacomall.tacomallspringbootmapper.store.StoreMapper;
-import cn.tacomall.tacomallspringbootapistore.service.store.StoreService;
+import cn.tacomall.tacomallspringbootapiadmin.service.store.StoreService;
 
 @Service
 public class StoreServiceImpl extends ServiceImpl<StoreMapper, Store> implements StoreService {

@@ -1,4 +1,4 @@
-package cn.tacomall.tacomallspringbootapistore.task;
+package cn.tacomall.tacomallspringbootapiadmin.task;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

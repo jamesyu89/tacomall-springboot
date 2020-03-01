@@ -1,4 +1,4 @@
-DROP TABLE user;;/*SkipError*/
+DROP TABLE IF EXISTS user;;/*SkipError*/
 CREATE TABLE user(
     id INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
     username VARCHAR(32)    COMMENT '用户名' ,
@@ -10,7 +10,7 @@ CREATE TABLE user(
 ) COMMENT = '用户 ';;
 
 ALTER TABLE user COMMENT '用户';;
-DROP TABLE user_weixin;;/*SkipError*/
+DROP TABLE IF EXISTS  user_weixin;;/*SkipError*/
 CREATE TABLE user_weixin(
     id INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
     user_id INT    COMMENT '用户id' ,
@@ -26,7 +26,7 @@ CREATE TABLE user_weixin(
 ) COMMENT = '用户微信 ';;
 
 ALTER TABLE user_weixin COMMENT '用户微信';;
-DROP TABLE user_profile;;/*SkipError*/
+DROP TABLE IF EXISTS  user_profile;;/*SkipError*/
 CREATE TABLE user_profile(
     id INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
     user_id VARCHAR(32)    COMMENT '用户id' ,
@@ -39,7 +39,7 @@ CREATE TABLE user_profile(
 ) COMMENT = '用户信息 ';;
 
 ALTER TABLE user_profile COMMENT '用户信息';;
-DROP TABLE user_level;;/*SkipError*/
+DROP TABLE IF EXISTS  user_level;;/*SkipError*/
 CREATE TABLE user_level(
     id INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
     user_id INT    COMMENT '用户id' ,
@@ -48,7 +48,7 @@ CREATE TABLE user_level(
 ) COMMENT = '用户等级 ';;
 
 ALTER TABLE user_level COMMENT '用户等级';;
-DROP TABLE user_statistics;;/*SkipError*/
+DROP TABLE IF EXISTS  user_statistics;;/*SkipError*/
 CREATE TABLE user_statistics(
     id INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
     user_id INT    COMMENT '用户id' ,
@@ -58,7 +58,7 @@ CREATE TABLE user_statistics(
 ) COMMENT = '用户统计 ';;
 
 ALTER TABLE user_statistics COMMENT '用户统计';;
-DROP TABLE user_address;;/*SkipError*/
+DROP TABLE IF EXISTS  user_address;;/*SkipError*/
 CREATE TABLE user_address(
     id INT NOT NULL AUTO_INCREMENT  COMMENT '主键' ,
     user_id INT    COMMENT '用户id' ,
