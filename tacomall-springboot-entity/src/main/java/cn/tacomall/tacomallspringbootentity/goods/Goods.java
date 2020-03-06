@@ -1,7 +1,5 @@
 package cn.tacomall.tacomallspringbootentity.goods;
 
-import java.util.Date;
-
 import lombok.Data;
 import com.baomidou.mybatisplus.annotation.*;
 

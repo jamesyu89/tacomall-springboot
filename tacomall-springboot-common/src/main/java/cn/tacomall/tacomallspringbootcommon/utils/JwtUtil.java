@@ -13,7 +13,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 
-import cn.tacomall.tacomallspringbootutils.DateUtil;
+import cn.tacomall.tacomallspringbootcommon.utils.DateUtil;
 import cn.tacomall.tacomallspringbootcommon.exception.ServerException;
 
 public class JwtUtil {

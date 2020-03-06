@@ -13,18 +13,12 @@
 
     <modules>
         <module>tacomall-springboot-common</module>
-        <module>tacomall-springboot-utils</module>
         <module>tacomall-springboot-entity</module>
         <module>tacomall-springboot-mapper</module>
-        <module>tacomall-springboot-security</module>
         <module>tacomall-springboot-generator</module>
-        <module>tacomall-springboot-task</module>
-        <module>tacomall-springboot-provider/tacomall-springboot-provider-search</module>
-        <module>tacomall-springboot-provider/tacomall-springboot-provider-weixin</module>
-        <module>tacomall-springboot-provider/tacomall-springboot-provider-msg</module>
-        <module>tacomall-springboot-provider/tacomall-springboot-provider-storage</module>
-        <module>tacomall-springboot-api/tacomall-springboot-api-portal</module>
+        <module>tacomall-springboot-api/tacomall-springboot-api-open</module>
         <module>tacomall-springboot-api/tacomall-springboot-api-admin</module>
+        <module>tacomall-springboot-api/tacomall-springboot-api-portal</module>
     </modules>
 
     <parent>
@@ -49,13 +43,7 @@
         <tacomallspringboot.entity.version>1.0-SNAPSHOT</tacomallspringboot.entity.version>
         <tacomallspringboot.mapper.version>1.0-SNAPSHOT</tacomallspringboot.mapper.version>
         <tacomallspringboot.common.version>1.0-SNAPSHOT</tacomallspringboot.common.version>
-        <tacomallspringboot.security.version>1.0-SNAPSHOT</tacomallspringboot.security.version>
         <tacomallspringboot.generator.version>1.0-SNAPSHOT</tacomallspringboot.generator.version>
-        <tacomallspringboot.task.version>1.0-SNAPSHOT</tacomallspringboot.task.version>
-        <tacomallspringboot.provider.weixin.version>1.0-SNAPSHOT</tacomallspringboot.provider.weixin.version>
-        <tacomallspringboot.provider.search.version>1.0-SNAPSHOT</tacomallspringboot.provider.search.version>
-        <tacomallspringboot.provider.msg.version>1.0-SNAPSHOT</tacomallspringboot.provider.msg.version>
-        <tacomallspringboot.provider.storage.version>1.0-SNAPSHOT</tacomallspringboot.provider.storage.version>
         <spring.boot.version>2.1.7.RELEASE</spring.boot.version>
         <mybatisplus.boot.starter.version>3.1.0</mybatisplus.boot.starter.version>
         <fastjson.version>1.2.58</fastjson.version>
@@ -86,8 +74,8 @@
         <dependencies>
             <dependency>
                 <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-utils</artifactId>
-                <version>${tacomallspringboot.utils.version}</version>
+                <artifactId>tacomall-springboot-common</artifactId>
+                <version>${tacomallspringboot.common.version}</version>
             </dependency>
             <dependency>
                 <groupId>cn.tacomall</groupId>
@@ -98,41 +86,6 @@
                 <groupId>cn.tacomall</groupId>
                 <artifactId>tacomall-springboot-mapper</artifactId>
                 <version>${tacomallspringboot.mapper.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-security</artifactId>
-                <version>${tacomallspringboot.security.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-common</artifactId>
-                <version>${tacomallspringboot.common.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-task</artifactId>
-                <version>${tacomallspringboot.task.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-provider-weixin</artifactId>
-                <version>${tacomallspringboot.provider.weixin.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-provider-search</artifactId>
-                <version>${tacomallspringboot.provider.search.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-provider-msg</artifactId>
-                <version>${tacomallspringboot.provider.msg.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-provider-storage</artifactId>
-                <version>${tacomallspringboot.provider.storage.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
