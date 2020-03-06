@@ -7,7 +7,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication(scanBasePackages = {
-        "cn.tacomall.tacomallspringbootsecurity.jwt",
         "cn.tacomall.tacomallspringbootcommon",
         "cn.tacomall.tacomallspringbootapiportal"
 })

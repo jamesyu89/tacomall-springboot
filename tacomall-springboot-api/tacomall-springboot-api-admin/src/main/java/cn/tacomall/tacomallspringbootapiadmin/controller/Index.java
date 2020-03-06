@@ -10,14 +10,14 @@ import cn.tacomall.tacomallspringbootcommon.utils.RequestUtil;
 import cn.tacomall.tacomallspringbootcommon.utils.ResponseUtil;
 import cn.tacomall.tacomallspringbootcommon.dto.ResponseDto;
 import cn.tacomall.tacomallspringbootcommon.annotation.SysLogger;
-import cn.tacomall.tacomallspringbootapiadmin.service.store.StoreService;
+import cn.tacomall.tacomallspringbootapiadmin.service.admin.AdminService;
 
 @RestController
-@RequestMapping(value = "/store/index/")
+@RequestMapping(value = "/admin/index/")
 public class Index {
 
     @Autowired
-    private StoreService storeService;
+    private AdminService storeService;
 
     @SysLogger("用户登录")
     @PostMapping("login")

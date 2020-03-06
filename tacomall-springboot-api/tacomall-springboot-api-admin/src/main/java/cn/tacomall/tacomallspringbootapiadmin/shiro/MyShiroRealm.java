@@ -10,13 +10,13 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
-import cn.tacomall.tacomallspringbootentity.store.Store;
-import cn.tacomall.tacomallspringbootentity.store.StorePermission;
-import cn.tacomall.tacomallspringbootmapper.store.StoreMapper;
+import cn.tacomall.tacomallspringbootentity.admin.Store;
+import cn.tacomall.tacomallspringbootentity.admin.StorePermission;
+import cn.tacomall.tacomallspringbootmapper.admin.AdminMapper;
 
 public class MyShiroRealm extends AuthorizingRealm {
     @Autowired
-    private StoreMapper storeMapper;
+    private AdminMapper storeMapper;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principal) {

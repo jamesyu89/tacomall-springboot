@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import cn.tacomall.tacomallspringbootapiadmin.shiro.*;
-import cn.tacomall.tacomallspringbootsecurity.shiro.*;
 
 @Configuration
 public class ShiroConfig {
@@ -60,10 +59,5 @@ public class ShiroConfig {
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
         return authorizationAttributeSourceAdvisor;
-    }
-
-    @Bean(name = "exceptionHandler")
-    public HandlerExceptionResolver handlerExceptionResolver() {
-        return new MyExceptionHandler();
     }
 }

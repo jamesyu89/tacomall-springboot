@@ -10,11 +10,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>tacomall-springboot-api-admin</artifactId>
-
-    <packaging>jar</packaging>
-
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>tacomall-springboot-api-open</artifactId>
 
     <dependencies>
         <dependency>
@@ -26,20 +22,16 @@
             <artifactId>tacomall-springboot-mapper</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
+            <groupId>com.github.binarywang</groupId>
+            <artifactId>weixin-java-miniapp</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz</artifactId>
+            <groupId>com.aliyun.oss</groupId>
+            <artifactId>aliyun-sdk-oss</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.quartz-scheduler</groupId>
-            <artifactId>quartz-jobs</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-spring</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 
@@ -59,5 +51,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

@@ -15,5 +15,7 @@ spring:
           url: jdbc:mysql://localhost:3306/tacomall-slave?serverTimezone=Asia/Shanghai
   data:
     elasticsearch:
-      cluster-name: my-application
-      cluster-nodes: 127:0:0:1:9300
+      cluster-name: es
+      cluster-nodes: 127.0.0.1:9300
+      repositories:
+        enabled: true

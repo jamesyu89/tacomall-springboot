@@ -1,0 +1,20 @@
+server:
+  port: 8001
+spring:
+  profiles:
+    active: dev
+  application:
+    name: middle-platform-biz-mp
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+logging:
+  level:
+    org.springframework.web: info
+    com.github.binarywang.demo.wx.miniapp: debug
+    cn.binarywang.wx.miniapp: debug
