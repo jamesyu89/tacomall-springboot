@@ -5,20 +5,20 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>cn.tacomall</groupId>
+    <groupId>cn.codingtalk</groupId>
 
-    <artifactId>tacomall-springboot</artifactId>
+    <artifactId>tacomall</artifactId>
 
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>tacomall-springboot-common</module>
-        <module>tacomall-springboot-entity</module>
-        <module>tacomall-springboot-mapper</module>
-        <module>tacomall-springboot-generator</module>
-        <module>tacomall-springboot-api/tacomall-springboot-api-open</module>
-        <module>tacomall-springboot-api/tacomall-springboot-api-admin</module>
-        <module>tacomall-springboot-api/tacomall-springboot-api-portal</module>
+        <module>tacomall-common</module>
+        <module>tacomall-entity</module>
+        <module>tacomall-mapper</module>
+        <module>tacomall-generator</module>
+        <module>tacomall-api/tacomall-api-open</module>
+        <module>tacomall-api/tacomall-api-admin</module>
+        <module>tacomall-api/tacomall-api-portal</module>
     </modules>
 
     <parent>
@@ -34,16 +34,12 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <docker.image.prefix>tacomall-springboot</docker.image.prefix>
         <dockermavenplugin.verion>1.0.0</dockermavenplugin.verion>
-        <mavencompilerplugin.version>3.1</mavencompilerplugin.version>
-        <mavensurefireplugin.version>2.19</mavensurefireplugin.version>
+        <maven.surefire.plugin.version>2.19</maven.surefire.plugin.version>
         <springbootmavenplugin.version>2.0.1.RELEASE</springbootmavenplugin.version>
-        <tacomallspringboot.utils.version>1.0-SNAPSHOT</tacomallspringboot.utils.version>
-        <tacomallspringboot.entity.version>1.0-SNAPSHOT</tacomallspringboot.entity.version>
-        <tacomallspringboot.mapper.version>1.0-SNAPSHOT</tacomallspringboot.mapper.version>
-        <tacomallspringboot.common.version>1.0-SNAPSHOT</tacomallspringboot.common.version>
-        <tacomallspringboot.generator.version>1.0-SNAPSHOT</tacomallspringboot.generator.version>
+        <tacomall.entity.version>1.0-SNAPSHOT</tacomall.entity.version>
+        <tacomall.mapper.version>1.0-SNAPSHOT</tacomall.mapper.version>
+        <tacomall.common.version>1.0-SNAPSHOT</tacomall.common.version>
         <spring.boot.version>2.1.7.RELEASE</spring.boot.version>
         <mybatisplus.boot.starter.version>3.1.0</mybatisplus.boot.starter.version>
         <fastjson.version>1.2.58</fastjson.version>
@@ -73,19 +69,19 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-common</artifactId>
-                <version>${tacomallspringboot.common.version}</version>
+                <groupId>cn.codingtalk</groupId>
+                <artifactId>tacomall-common</artifactId>
+                <version>${tacomall.common.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-entity</artifactId>
-                <version>${tacomallspringboot.entity.version}</version>
+                <groupId>cn.codingtalk</groupId>
+                <artifactId>tacomall-entity</artifactId>
+                <version>${tacomall.entity.version}</version>
             </dependency>
             <dependency>
-                <groupId>cn.tacomall</groupId>
-                <artifactId>tacomall-springboot-mapper</artifactId>
-                <version>${tacomallspringboot.mapper.version}</version>
+                <groupId>cn.codingtalk</groupId>
+                <artifactId>tacomall-mapper</artifactId>
+                <version>${tacomall.mapper.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -178,18 +174,8 @@
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${mavencompilerplugin.version}</version>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${mavensurefireplugin.version}</version>
+                <version>${maven.surefire.plugin.version}</version>
                 <configuration>
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
