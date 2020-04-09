@@ -13,8 +13,7 @@ import cn.codingtalk.tacomallcommon.utils.RequestUtil;
 import cn.codingtalk.tacomallcommon.utils.ResponseUtil;
 import cn.codingtalk.tacomallapiportal.annotation.IgnoreAuth;
 import cn.codingtalk.tacomallapiportal.annotation.RequireAuth;
-import cn.codingtalk.tacomallcommon.dto.ResponseDto;
-import cn.codingtalk.tacomallapiportal.service.member.*;
+import cn.codingtalk.tacomallcommon.vo.ResponseVo;
 
 @Api(tags = "用户模块")
 @RestController
@@ -32,7 +31,7 @@ public class Member {
     })
     @IgnoreAuth
     @PostMapping("miniAppLogin")
-    public ResponseDto miniAppLogin(@RequestBody RequestUtil requestUtil, ResponseUtil responseUtil) throws Exception {
+    public ResponseVo miniAppLogin(@RequestBody RequestUtil requestUtil, ResponseUtil responseUtil) throws Exception {
         JSONObject json = requestUtil.getJson("json");
         String token = memberService.miniAppLogin(json);
         responseUtil.data(token);
@@ -43,7 +42,7 @@ public class Member {
     @ApiImplicitParams({})
     @RequireAuth
     @PostMapping("synopsis")
-    public ResponseDto synopsis(@RequestBody RequestUtil requestUtil, ResponseUtil responseUtil) throws Exception {
+    public ResponseVo synopsis(@RequestBody RequestUtil requestUtil, ResponseUtil responseUtil) throws Exception {
         Object member = memberService.synopsis();
         responseUtil.data(member);
         return responseUtil.success();

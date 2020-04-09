@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import cn.codingtalk.tacomallcommon.utils.RequestUtil;
 import cn.codingtalk.tacomallcommon.utils.ResponseUtil;
-import cn.codingtalk.tacomallcommon.dto.ResponseDto;
+import cn.codingtalk.tacomallcommon.vo.ResponseVo;
 import cn.codingtalk.tacomallapiopen.service.OssService;
 
 @RestController
@@ -19,14 +19,14 @@ public class Oss {
     private OssService ossService;
 
     @PostMapping("authorize")
-    public ResponseDto authorize(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
+    public ResponseVo authorize(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
         return responseUtil
                 .data(ossService.authorize(jsonRequest.getStr("dir")))
                 .success();
     }
 
     @PostMapping("callback")
-    public ResponseDto callback(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
+    public ResponseVo callback(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
         return responseUtil
                 .success();
     }

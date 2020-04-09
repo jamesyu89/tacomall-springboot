@@ -1,13 +1,13 @@
 package cn.codingtalk.tacomallcommon.utils;
 
-import cn.codingtalk.tacomallcommon.dto.ResponseDto;
+import cn.codingtalk.tacomallcommon.vo.ResponseVo;
 
 public class ResponseUtil {
 
-    ResponseDto<Object> resp;
+    ResponseVo<Object> resp;
 
     public ResponseUtil() {
-        resp = new ResponseDto<>();
+        resp = new ResponseVo<>();
     }
 
     public ResponseUtil code(int code) {
@@ -20,22 +20,22 @@ public class ResponseUtil {
         return this;
     }
 
-    public ResponseDto success() {
+    public ResponseVo success() {
         resp.setMessage("操作成功");
         return resp;
     }
 
-    public ResponseDto success(String message) {
+    public ResponseVo success(String message) {
         resp.setMessage(message);
         return resp;
     }
 
-    public ResponseDto error() {
+    public ResponseVo error() {
         resp.setMessage("操作失败");
         return resp;
     }
 
-    public ResponseDto error(String message) {
+    public ResponseVo error(String message) {
         resp.setMessage(message);
         return resp;
     }

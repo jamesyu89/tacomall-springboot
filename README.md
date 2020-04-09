@@ -59,7 +59,8 @@
 - [x] [公共依赖](https://gitee.com/running-cat/tacomall-springboot/tree/master/tacomall-common) 公共工具库、异常
 - [x] [实体类](https://gitee.com/running-cat/tacomall-springboot/tree/master/tacomall-entity) java bean和数据库的映射
 - [x] [代码生成](https://gitee.com/running-cat/tacomall-springboot/tree/master/tacomall-generator) 提供entity和mapper的快速生成
-- [x] [数据库操作]](https://gitee.com/running-cat/tacomall-springboot/tree/master/tacomall-mapper) 数据库操作
+- [x] [数据库操作](https://gitee.com/running-cat/tacomall-springboot/tree/master/tacomall-mapper) 数据库操作
+- [x] [任务调度](https://gitee.com/running-cat/tacomall-springboot/tree/master/tacomall-job) 提供任务调度创建，执行
 - [x] [微信小程序接口](https://gitee.com/running-cat/tacomall-springboot/tree/master/tacomall-api/tacomall-api-portal) 微信小程序接口,提供用户，商品服务
 - [x] [平台管理后台](https://gitee.com/running-cat/tacomall-springboot/tree/master/tacomall-api/tacomall-api-admin) 提供商家，商品, 会员管理
 - [ ] [商家管理后台](https://gitee.com/running-cat/tacomall-springboot/tree/master/tacomall-api/tacomall-api-enterprise) 提供商品, 会员管理
@@ -78,6 +79,9 @@ tacomall-springboot                             项目
 │  ├─tacomall-api-enterprise                    商家管理后台
 │  ├─tacomall-api-open                          开放接口
 │  ├─tacomall-api-portal                        小程序接口
+├─tacomall-job                                  任务调度
+│  ├─tacomall-job-admin                         调度接口
+│  ├─tacomall-job-executor                      调度执行
 ├─tacomall-common                               公共依赖
 ├─tacomall-entity                               实体类
 ├─tacomall-generator                            代码生成

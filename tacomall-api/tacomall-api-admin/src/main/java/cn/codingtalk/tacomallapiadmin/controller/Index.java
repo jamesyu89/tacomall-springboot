@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import cn.codingtalk.tacomallcommon.utils.RequestUtil;
 import cn.codingtalk.tacomallcommon.utils.ResponseUtil;
-import cn.codingtalk.tacomallcommon.dto.ResponseDto;
+import cn.codingtalk.tacomallcommon.vo.ResponseVo;
 import cn.codingtalk.tacomallcommon.annotation.SysLogger;
 
 @RestController
@@ -21,7 +21,7 @@ public class Index {
 
     @SysLogger("用户登录")
     @PostMapping("login")
-    public ResponseDto login(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
+    public ResponseVo login(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
         String username = jsonRequest.getStr("username");
         String password = jsonRequest.getStr("password");
         storeService.login(username, password);

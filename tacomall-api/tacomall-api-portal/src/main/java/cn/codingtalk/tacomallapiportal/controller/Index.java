@@ -24,7 +24,7 @@ import io.swagger.annotations.*;
 import cn.codingtalk.tacomallcommon.utils.RequestUtil;
 import cn.codingtalk.tacomallcommon.utils.ResponseUtil;
 import cn.codingtalk.tacomallapiportal.annotation.IgnoreAuth;
-import cn.codingtalk.tacomallcommon.dto.ResponseDto;
+import cn.codingtalk.tacomallcommon.vo.ResponseVo;
 
 /**
  * @author: running-cat
@@ -56,7 +56,7 @@ public class Index {
     })
     @IgnoreAuth
     @PostMapping("index")
-    public ResponseDto index(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
+    public ResponseVo index(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
         /**
          * 使用jsonRequest.getStr获取客户端传来的code
          * 无则抛出ClientException
