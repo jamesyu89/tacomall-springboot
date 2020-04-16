@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import cn.codingtalk.tacomallcommon.utils.RequestUtil;
 import cn.codingtalk.tacomallcommon.utils.ResponseUtil;
 import cn.codingtalk.tacomallcommon.vo.ResponseVo;
-import cn.codingtalk.tacomallcommon.annotation.SysLogger;
+import cn.codingtalk.tacomallapiadmin.annotation.SysLogger;
 
 @RestController
 @RequestMapping(value = "/admin/index/")
-public class Index {
+public class IndexController {
 
     @Autowired
     private AdminService storeService;

@@ -13,7 +13,7 @@ import cn.codingtalk.tacomallapiopen.service.OssService;
 
 @RestController
 @RequestMapping(value = "/open/oss")
-public class Oss {
+public class OssController {
 
     @Autowired
     private OssService ossService;

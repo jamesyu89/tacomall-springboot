@@ -30,7 +30,7 @@ public class HttpRequestUtil {
             ResponseEntity<JSONObject> request = restTemplate.postForEntity(baseUrl + path, httpEntity, JSONObject.class);
             json = request.getBody();
         } catch (Exception ex) {
-            ExceptionUtil.throwRpcException("rpc错误");
+            ExceptionUtil.throwServerException("http错误");
         }
         return json;
     }

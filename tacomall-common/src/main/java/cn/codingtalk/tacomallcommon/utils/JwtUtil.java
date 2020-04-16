@@ -13,13 +13,11 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 
-import cn.codingtalk.tacomallcommon.exception.ServerException;
-
 public class JwtUtil {
     private static final String SECRET = "cn.codingtalk.secret";
     private static final String ISSUER = "user";
 
-    public static String create(Map<String, String> claims) throws Exception {
+    public static String create(Map<String, String> claims) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(SECRET);
             JWTCreator.Builder builder = JWT.create()
@@ -28,20 +26,21 @@ public class JwtUtil {
             claims.forEach(builder::withClaim);
             return builder.sign(algorithm);
         } catch (IllegalArgumentException | JWTCreationException e) {
-            throw new ServerException("生成token失败");
+            ExceptionUtil.throwServerException("生成token失败");
         }
+        return "";
     }
 
-    public static Map<String, String> verify(String token) throws Exception {
+    public static Map<String, String> verify(String token) {
         Algorithm algorithm;
-        Map<String, Claim> map;
+        Map<String, Claim> map = new HashMap<>();
         try {
             algorithm = Algorithm.HMAC256(SECRET);
             JWTVerifier verifier = JWT.require(algorithm).withIssuer(ISSUER).build();
             DecodedJWT jwt = verifier.verify(token);
             map = jwt.getClaims();
         } catch (JWTVerificationException e) {
-            throw new ServerException("鉴权失败");
+            ExceptionUtil.throwServerException("鉴权失败");
         }
         Map<String, String> resultMap = new HashMap<>(map.size());
         map.forEach((k, v) -> resultMap.put(k, v.asString()));

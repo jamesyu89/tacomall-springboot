@@ -8,7 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
         "cn.codingtalk.tacomallcommon",
         "cn.codingtalk.tacomallapiadmin"
 })
-@MapperScan("cn.codingtalk.tacomallmapper")
+@MapperScan("cn.codingtalk.tacomallapiadmin")
 public class ApiAdminApplication {
     public static void main(String[] args) {
         SpringApplication.run(ApiAdminApplication.class, args);

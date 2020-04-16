@@ -1,7 +1,6 @@
 package cn.codingtalk.tacomallcommon.utils;
 
-import cn.codingtalk.tacomallcommon.exception.*;
-import cn.codingtalk.tacomallcommon.exception.*;
+import cn.codingtalk.tacomallcommon.exceptionInterceptor.exception.*;
 
 public class ExceptionUtil {
     public static void throwBizException(String message) throws BizException {
@@ -10,14 +9,6 @@ public class ExceptionUtil {
 
     public static void throwClientException(String message) throws ClientException {
         throw new ClientException(message);
-    }
-
-    public static void throwForbiddenException(String message) throws ForbiddenException {
-        throw new ForbiddenException(message);
-    }
-
-    public static void throwRpcException(String message) throws RpcException {
-        throw new RpcException(message);
     }
 
     public static void throwServerException(String message) throws ServerException {

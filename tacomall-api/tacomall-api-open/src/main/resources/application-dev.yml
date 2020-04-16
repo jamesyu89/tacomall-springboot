@@ -1,18 +1,3 @@
-spring:
-  boot:
-    admin:
-      client:
-        url: http://localhost:7030
-        password: root
-        username: 123456
-        instance:
-          prefer-ip: true
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:7000/eureka/
-  instance:
-    prefer-ip-address: true
 wx:
   miniapp:
     configs:
@@ -25,6 +10,7 @@ oss:
   endPoint: oss-cn-shenzhen.aliyuncs.com
   accesskey: LTAI4Fickf14NieXeJSAQxcH
   accessSecret:
-  bucket: mgteach-default
+  bucket: codingtalk-img
   expire: 3600
-  host: mgteach-default.oss-cn-shenzhen.aliyuncs.com
+  host: codingtalk-img.oss-cn-shenzhen.aliyuncs.com
+  callback:

@@ -18,7 +18,7 @@ import cn.codingtalk.tacomallcommon.vo.ResponseVo;
 @Api(tags = "用户模块")
 @RestController
 @RequestMapping(value = "/portal/member/")
-public class Member {
+public class MemberController {
 
     @Autowired
     private MemberService memberService;

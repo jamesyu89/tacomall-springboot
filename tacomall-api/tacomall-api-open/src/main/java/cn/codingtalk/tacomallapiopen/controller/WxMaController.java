@@ -33,7 +33,7 @@ import cn.codingtalk.tacomallapiopen.config.WxMaConfig;
 
 @RestController
 @RequestMapping("/WxMa/{appid}")
-public class WxMa {
+public class WxMaController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private void route(WxMaMessage message, String appid) {

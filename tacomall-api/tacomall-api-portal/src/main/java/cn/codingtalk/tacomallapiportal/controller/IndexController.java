@@ -37,7 +37,7 @@ import cn.codingtalk.tacomallcommon.vo.ResponseVo;
 @Api(tags = "默认模板入口")
 @RestController
 @RequestMapping(value = "/portal/index/")
-public class Index {
+public class IndexController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
