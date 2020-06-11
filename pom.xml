@@ -21,7 +21,7 @@
         <module>tacomall-api/tacomall-api-open</module>
         <module>tacomall-api/tacomall-api-admin</module>
         <module>tacomall-api/tacomall-api-portal</module>
-        <module>tacomall-api/tacomall-api-enterprise</module>
+        <module>tacomall-api/tacomall-api-merchant</module>
     </modules>
 
     <parent>

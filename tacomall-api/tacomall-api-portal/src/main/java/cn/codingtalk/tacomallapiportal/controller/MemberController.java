@@ -30,10 +30,10 @@ public class MemberController {
             @ApiImplicitParam(name = "encryptedData", value = "encryptedData", required = true, paramType = "path")
     })
     @IgnoreAuth
-    @PostMapping("miniAppLogin")
+    @PostMapping("wxMaLogin")
     public ResponseVo miniAppLogin(@RequestBody RequestUtil requestUtil, ResponseUtil responseUtil) throws Exception {
         JSONObject json = requestUtil.getJson("json");
-        String token = memberService.miniAppLogin(json);
+        String token = memberService.wxMaLogin(json);
         responseUtil.data(token);
         return responseUtil.success();
     }

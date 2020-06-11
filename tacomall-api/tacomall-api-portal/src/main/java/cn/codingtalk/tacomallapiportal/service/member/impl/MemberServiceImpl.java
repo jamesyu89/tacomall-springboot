@@ -40,7 +40,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     DataSourceTransactionManager dataSourceTransactionManager;
 
     @Override
-    public String miniAppLogin(JSONObject json) throws Exception {
+    public String wxMaLogin(JSONObject json) throws Exception {
 
         Member member = baseMapper.getMemberByOpenId(json.getString("openId"));
         if (ObjectUtil.isNull(member)) {

@@ -1,4 +1,4 @@
-package cn.codingtalk.tacomallapiportal.service.esgoods.impl;
+package cn.codingtalk.tacomallapiportal.service.esGoods.impl;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 import cn.codingtalk.tacomallapiportal.entity.EsGoods;
 import cn.codingtalk.tacomallapiportal.mapper.EsGoodsMapper;
-import cn.codingtalk.tacomallapiportal.service.esgoods.EsGoodsService;
+import cn.codingtalk.tacomallapiportal.service.esGoods.EsGoodsService;
 
 @Service
 public class EsGoodsServiceImpl implements EsGoodsService {

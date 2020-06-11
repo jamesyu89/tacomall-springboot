@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-ApiPortalApplication<tacomall-api-portal>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "cn.codingtalk.tacomallapiportal.ApiPortalApplication",
+            "projectName": "tacomall-api-portal",
+            "args": ""
+        }
+    ]
+}

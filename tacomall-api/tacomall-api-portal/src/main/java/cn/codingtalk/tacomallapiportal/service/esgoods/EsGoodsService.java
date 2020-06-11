@@ -1,4 +1,4 @@
-package cn.codingtalk.tacomallapiportal.service.esgoods;
+package cn.codingtalk.tacomallapiportal.service.esGoods;
 
 import java.util.List;
 
