@@ -76,7 +76,7 @@
 tacomall-springboot                             项目
 ├─tacomall-api                                  接口模块
 │  ├─tacomall-api-admin                         平台管理后台
-│  ├─tacomall-api-enterprise                    商家管理后台
+│  ├─tacomall-api-merchant                    商家管理后台
 │  ├─tacomall-api-open                          开放接口
 │  ├─tacomall-api-portal                        小程序接口
 ├─tacomall-job                                  任务调度

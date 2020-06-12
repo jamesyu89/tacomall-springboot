@@ -1,4 +1,13 @@
-package cn.codingtalk.tacomallapiopen.serviceimpl;
+/***
+ * @Author: 码上talk|RC
+ * @Date: 2020-06-09 23:20:41
+ * @LastEditTime: 2020-06-12 15:31:07
+ * @LastEditors: 码上talk|RC
+ * @Description: 
+ * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-open\src\main\java\cn\codingtalk\tacomallapiopen\service\impl\OssServiceImpl.java
+ * @Just do what I think it is right
+ */
+package cn.codingtalk.tacomallapiopen.service.impl;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -14,6 +23,7 @@ import org.springframework.stereotype.Service;
 
 import cn.codingtalk.tacomallapiopen.config.OssConfig;
 import cn.codingtalk.tacomallapiopen.service.OssService;
+import cn.codingtalk.tacomallcommon.vo.ResponseVo;
 
 @Service
 public class OssServiceImpl implements OssService {
@@ -21,7 +31,8 @@ public class OssServiceImpl implements OssService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
-    public Map<String, Object> authorize(String dir) {
+    public ResponseVo<Map<String, Object>> authorize(String dir) {
+        ResponseVo<Map<String, Object>> responseVo = new ResponseVo();
         Map<String, Object> map = new HashMap<>();
         try {
             OSSClient client = OssConfig.getOSSClient();
@@ -45,6 +56,7 @@ public class OssServiceImpl implements OssService {
         } catch (Exception e) {
             this.logger.info("storage authorize fail");
         }
-        return map;
+        responseVo.setData(map);
+        return responseVo;
     }
 }

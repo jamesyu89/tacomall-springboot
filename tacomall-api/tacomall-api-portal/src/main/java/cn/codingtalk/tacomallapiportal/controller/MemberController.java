@@ -1,19 +1,27 @@
+/***
+ * @Author: 码上talk|RC
+ * @Date: 2020-06-09 23:20:41
+ * @LastEditTime: 2020-06-12 18:30:31
+ * @LastEditors: 码上talk|RC
+ * @Description: 
+ * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-portal\src\main\java\cn\codingtalk\tacomallapiportal\controller\MemberController.java
+ * @Just do what I think it is right
+ */
 package cn.codingtalk.tacomallapiportal.controller;
 
-import cn.codingtalk.tacomallapiportal.service.member.MemberService;
-import com.alibaba.fastjson.JSONObject;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import io.swagger.annotations.*;
 
-import cn.codingtalk.tacomallcommon.utils.RequestUtil;
-import cn.codingtalk.tacomallcommon.utils.ResponseUtil;
 import cn.codingtalk.tacomallapiportal.annotation.IgnoreAuth;
 import cn.codingtalk.tacomallapiportal.annotation.RequireAuth;
+import cn.codingtalk.tacomallentity.member.Member;
 import cn.codingtalk.tacomallcommon.vo.ResponseVo;
+import cn.codingtalk.tacomallapiportal.service.member.MemberService;
 
 @Api(tags = "用户模块")
 @RestController
@@ -31,20 +39,20 @@ public class MemberController {
     })
     @IgnoreAuth
     @PostMapping("wxMaLogin")
-    public ResponseVo miniAppLogin(@RequestBody RequestUtil requestUtil, ResponseUtil responseUtil) throws Exception {
-        JSONObject json = requestUtil.getJson("json");
-        String token = memberService.wxMaLogin(json);
-        responseUtil.data(token);
-        return responseUtil.success();
+    public ResponseVo<String> miniAppLogin(@RequestParam(value = "iv") String iv,
+                                    @RequestParam(value = "code") String code,
+                                    @RequestParam(value = "code") String appid,
+                                    @RequestParam(value = "code") String rawData,
+                                    @RequestParam(value = "code") String signature,
+                                    @RequestParam(value = "encryptedData") String encryptedData) {
+        return memberService.wxMaLogin(iv, code, appid, rawData, signature, encryptedData);
     }
 
     @ApiOperation(value = "用户信息", notes = "用户信息接口", httpMethod = "POST")
     @ApiImplicitParams({})
     @RequireAuth
-    @PostMapping("synopsis")
-    public ResponseVo synopsis(@RequestBody RequestUtil requestUtil, ResponseUtil responseUtil) throws Exception {
-        Object member = memberService.synopsis();
-        responseUtil.data(member);
-        return responseUtil.success();
+    @PostMapping("info")
+    public ResponseVo<Member> info() {
+        return memberService.info();
     }
 }

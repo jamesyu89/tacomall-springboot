@@ -1,9 +1,20 @@
+/***
+ * @Author: 码上talk|RC
+ * @Date: 2020-06-09 23:20:41
+ * @LastEditTime: 2020-06-12 21:45:51
+ * @LastEditors: 码上talk|RC
+ * @Description: 
+ * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-admin\src\main\java\cn\codingtalk\tacomallapiadmin\aspect\LoginLoggerAspect.java
+ * @Just do what I think it is right
+ */
 package cn.codingtalk.tacomallapiadmin.aspect;
 
 import java.util.Date;
 import java.lang.reflect.Method;
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,18 +27,20 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import cn.codingtalk.tacomallcommon.utils.JsonUtil;
 import cn.codingtalk.tacomallcommon.utils.IpUtil;
-import cn.codingtalk.tacomallentity.sys.SysLog;
-import cn.codingtalk.tacomallmapper.sys.SysLogMapper;
-import cn.codingtalk.tacomallapiadmin.annotation.SysLogger;
+import cn.codingtalk.tacomallentity.admin.AdminUserLoginLogger;
+import cn.codingtalk.tacomallmapper.admin.AdminUserLoginLoggerMapper;
+import cn.codingtalk.tacomallapiadmin.annotation.LoginLogger;
 
 @Aspect
 @Component
-public class SysLoggerAspect {
+public class LoginLoggerAspect {
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private SysLogMapper sysLogMapper;
+    private AdminUserLoginLoggerMapper adminUserLoginLoggerMapper;
 
-    @Pointcut("@annotation(cn.codingtalk.tacomallcommon.annotation.SysLogger)")
+    @Pointcut("@annotation(cn.codingtalk.tacomallapiadmin.annotation.LoginLogger)")
     public void logPointCut() {
 
     }
@@ -46,22 +59,23 @@ public class SysLoggerAspect {
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();
         Method method = signature.getMethod();
 
-        SysLog log = new SysLog();
-        if (method.getAnnotation(SysLogger.class) != null) {
-            SysLogger sysLogger = method.getAnnotation(SysLogger.class);
-            log.setOperation(sysLogger.value());
+        AdminUserLoginLogger adminUserLoginLogger = new AdminUserLoginLogger();
+        if (method.getAnnotation(LoginLogger.class) != null) {
+            LoginLogger loginLogger = method.getAnnotation(LoginLogger.class);
+            adminUserLoginLogger.setOperation(loginLogger.value());
         }
         String className = joinPoint.getTarget().getClass().getName();
         String methodName = signature.getName();
-        log.setMethod(className + "." + methodName + "()");
+        this.logger.info(className + "." + methodName + "()");
         Object[] args = joinPoint.getArgs();
         try {
             String params = JsonUtil.toJson(args);
-            log.setParams(params);
-            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
-            log.setIp(IpUtil.getIpAddr(request));
-            log.setCreateTime(new Date());
-            sysLogMapper.insert(log);
+            this.logger.info(params);
+            HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+                    .getRequest();
+            adminUserLoginLogger.setIp(IpUtil.getIpAddr(request));
+            adminUserLoginLogger.setCreateTime(new Date());
+            adminUserLoginLoggerMapper.insert(adminUserLoginLogger);
         } catch (Exception ignored) {
 
         }

@@ -1,4 +1,15 @@
+/***
+ * @Author: 码上talk|RC
+ * @Date: 2020-06-09 23:20:41
+ * @LastEditTime: 2020-06-12 10:05:46
+ * @LastEditors: 码上talk|RC
+ * @Description: 
+ * @FilePath: \tacomall-springboot\tacomall-entity\src\main\java\cn\codingtalk\tacomallentity\member\MemberWeixin.java
+ * @Just do what I think it is right
+ */
 package cn.codingtalk.tacomallentity.member;
+
+import java.util.Date;
 
 import lombok.Data;
 import com.baomidou.mybatisplus.annotation.*;
@@ -11,11 +22,21 @@ public class MemberWeixin {
 
     private int memberId;
 
-    private String openId;
+    private String unionId;
 
     private String nickname;
 
-    private String gender;
+    private String avatar;
 
-    private String avatarUrl;
+    private int gender;
+
+    private String mobile;
+
+    private int isDelete;
+
+    private Date createtime;
+
+    private Date updateTime;
+
+    private Date deleteTime;
 }

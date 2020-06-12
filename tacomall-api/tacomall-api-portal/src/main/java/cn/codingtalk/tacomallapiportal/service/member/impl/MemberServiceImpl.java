@@ -1,37 +1,60 @@
+/***
+ * @Author: 码上talk|RC
+ * @Date: 2020-06-09 23:20:41
+ * @LastEditTime: 2020-06-12 19:07:59
+ * @LastEditors: 码上talk|RC
+ * @Description: 
+ * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-portal\src\main\java\cn\codingtalk\tacomallapiportal\service\member\impl\MemberServiceImpl.java
+ * @Just do what I think it is right
+ */
 package cn.codingtalk.tacomallapiportal.service.member.impl;
 
 import java.util.Map;
 import java.util.HashMap;
 
-import cn.codingtalk.tacomallapiportal.service.member.MemberService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.stereotype.Service;
+import cn.binarywang.wx.miniapp.api.WxMaService;
+import cn.binarywang.wx.miniapp.bean.WxMaUserInfo;
+import cn.binarywang.wx.miniapp.bean.WxMaPhoneNumberInfo;
+import cn.binarywang.wx.miniapp.bean.WxMaMessage;
+import cn.binarywang.wx.miniapp.constant.WxMaConstants;
+import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
+import me.chanjar.weixin.common.bean.result.WxMediaUploadResult;
+import me.chanjar.weixin.common.error.WxErrorException;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import cn.codingtalk.tacomallcommon.utils.RequestUtil;
+import cn.codingtalk.tacomallcommon.vo.ResponseVo;
 import cn.codingtalk.tacomallcommon.utils.ObjectUtil;
 import cn.codingtalk.tacomallcommon.utils.IntUtil;
 import cn.codingtalk.tacomallentity.member.Member;
 import cn.codingtalk.tacomallmapper.member.MemberMapper;
-import cn.codingtalk.tacomallentity.member.MemberProfile;
-import cn.codingtalk.tacomallmapper.member.MemberProfileMapper;
 import cn.codingtalk.tacomallentity.member.MemberWeixin;
 import cn.codingtalk.tacomallmapper.member.MemberWeixinMapper;
+import cn.codingtalk.tacomallentity.member.MemberWeixinMa;
+import cn.codingtalk.tacomallmapper.member.MemberWeixinMaMapper;
 import cn.codingtalk.tacomallcommon.utils.ExceptionUtil;
 import cn.codingtalk.tacomallcommon.utils.JwtUtil;
+import cn.codingtalk.tacomallapiportal.config.WxMaConfig;
+import cn.codingtalk.tacomallapiportal.service.member.MemberService;
 
 @Service
 public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> implements MemberService {
 
-    @Autowired
-    private MemberProfileMapper memberProfileMapper;
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private MemberWeixinMapper memberWeixinMapper;
+
+    @Autowired
+    private MemberWeixinMaMapper memberWeixinMaMapper;
 
     @Autowired
     TransactionDefinition transactionDefinition;
@@ -40,52 +63,76 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     DataSourceTransactionManager dataSourceTransactionManager;
 
     @Override
-    public String wxMaLogin(JSONObject json) throws Exception {
+    public ResponseVo<String> wxMaLogin(String iv, String code, String appid, String rawData, String signature, String encryptedData) {
+        ResponseVo<String> responseVo = new ResponseVo<>();
 
-        Member member = baseMapper.getMemberByOpenId(json.getString("openId"));
-        if (ObjectUtil.isNull(member)) {
-            TransactionStatus transactionStatus = dataSourceTransactionManager.getTransaction(transactionDefinition);
-            try {
+        final WxMaService wxService = WxMaConfig.getMaService(appid);
 
-                member = new Member();
-                member.setStatus(1);
-                baseMapper.insert(member);
-
-                MemberProfile memberProfile = new MemberProfile();
-                memberProfile.setMemberId(member.getId());
-                memberProfile.setNickname(json.getString("nickName"));
-                memberProfile.setAvatar(json.getString("avatarUrl"));
-                memberProfileMapper.insert(memberProfile);
-
-                MemberWeixin memberWeixin = new MemberWeixin();
-                memberWeixin.setMemberId(member.getId());
-                memberWeixin.setOpenId(json.getString("openId"));
-                memberWeixin.setNickname(json.getString("nickName"));
-                memberWeixin.setGender(json.getString("gender"));
-                memberWeixin.setAvatarUrl(json.getString("avatarUrl"));
-                memberWeixinMapper.insert(memberWeixin);
-
-                dataSourceTransactionManager.commit(transactionStatus);
-            } catch (Exception e) {
-                dataSourceTransactionManager.rollback(transactionStatus);
-                ExceptionUtil.throwSqlException("sql错误");
-            }
-        }
-
-        String token = "";
         try {
-            Map<String, String> claims = new HashMap<>(1);
-            claims.put("id", IntUtil.toString(member.getId()));
-            token = JwtUtil.create(claims);
-        } catch (Exception e) {
-            ExceptionUtil.throwBizException("token生成失败");
+            WxMaJscode2SessionResult session = wxService.getUserService().getSessionInfo(code);
+            this.logger.info(session.getSessionKey());
+            this.logger.info(session.getOpenid());
+            if (!wxService.getUserService().checkUserInfo(session.getSessionKey(), rawData, signature)) {
+                responseVo.setOk(400);
+                responseVo.setMessage("user check failed");
+                return responseVo;
+            }
+            WxMaUserInfo userInfo = wxService.getUserService().getUserInfo(session.getSessionKey(), encryptedData, iv);
+
+            Member member = baseMapper.getMember("open_id", session.getOpenid());
+
+            if (ObjectUtil.isNull(member)) {
+                TransactionStatus transactionStatus = dataSourceTransactionManager
+                        .getTransaction(transactionDefinition);
+                try {
+
+                    member = new Member();
+                    member.setNickname(userInfo.getNickName());
+                    member.setAvatar(userInfo.getAvatarUrl());
+                    baseMapper.insert(member);
+
+                    MemberWeixin memberWeixin = new MemberWeixin();
+                    memberWeixin.setMemberId(member.getId());
+                    memberWeixin.setUnionId(userInfo.getUnionId());
+                    memberWeixin.setNickname(userInfo.getNickName());
+                    memberWeixin.setAvatar(userInfo.getAvatarUrl());
+                    memberWeixinMapper.insert(memberWeixin);
+
+                    MemberWeixinMa memberWeixinMa = new MemberWeixinMa();
+                    memberWeixinMa.setOpenId(userInfo.getOpenId());
+                    memberWeixinMaMapper.insert(memberWeixinMa);
+
+                    dataSourceTransactionManager.commit(transactionStatus);
+                } catch (Exception e) {
+                    dataSourceTransactionManager.rollback(transactionStatus);
+                    ExceptionUtil.throwSqlException("sql错误");
+                }
+            }
+
+            String token = "";
+            try {
+                Map<String, String> claims = new HashMap<>(1);
+                claims.put("id", IntUtil.toString(member.getId()));
+                token = JwtUtil.create(claims);
+            } catch (Exception e) {
+                ExceptionUtil.throwBizException("token生成失败");
+            }
+            responseVo.setData(token);
+            return responseVo;
+        } catch (WxErrorException e) {
+            this.logger.error(e.getMessage(), e);
+            responseVo.setOk(400);
+            responseVo.setMessage(e.toString());
+            return responseVo;
         }
-        return token;
+
     }
 
     @Override
-    public Object synopsis() {
-        return baseMapper.getMemberSynopsis(RequestUtil.getLoginUser().getString("id"));
+    public ResponseVo<Member> info() {
+        ResponseVo<Member> responseVo = new ResponseVo<>();
+        responseVo.setData(baseMapper.getMember("id", RequestUtil.getLoginUser().getString("id")));
+        return responseVo;
     }
 
 }

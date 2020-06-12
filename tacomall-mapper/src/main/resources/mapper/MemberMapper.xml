@@ -3,30 +3,24 @@
 <mapper namespace="cn.codingtalk.tacomallmapper.member.MemberMapper">
 
     <resultMap id="member" type="cn.codingtalk.tacomallentity.member.Member">
-        <id property="id" column="id"/>
-        <result property="membername" column="membername"/>
-    </resultMap>
-
-    <resultMap id="memberSynopsis" type="cn.codingtalk.tacomallentity.member.Member" extends="member">
-        <association property="memberProfile" column="id"
-                     select="cn.codingtalk.tacomallmapper.member.MemberProfileMapper.selectByMemberId"/>
-        <association property="memberWeixin" column="id"
-                     select="cn.codingtalk.tacomallmapper.member.MemberWeixinMapper.selectByMemberId"/>
+        <id property="id" column="id" />
+        <result property="username" column="username" />
     </resultMap>
 
 
-    <select id="getMemberByOpenId" resultMap="member">
+    <select id="getMember" resultMap="member">
         select *
         from member u
-        left join member_weixin w
-        on u.id = w.member_id
-        where w.open_id = #{openId}
-    </select>
-
-    <select id="getMemberSynopsis" resultMap="memberSynopsis">
-        select *
-        from member
-        where id = #{id}
+        <choose>
+            <when test="key=='id'">
+                where u.id = #{value}
+            </when>
+            <when test="key=='open_id'">
+                left join member_weixin wa
+                on u.id = wa.member_id
+                where wa.open_id = #{value}
+            </when>
+        </choose>
     </select>
 
 </mapper>

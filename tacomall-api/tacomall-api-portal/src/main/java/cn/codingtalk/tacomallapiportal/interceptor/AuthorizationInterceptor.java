@@ -1,3 +1,12 @@
+/***
+ * @Author: 码上talk|RC
+ * @Date: 2020-06-09 23:20:41
+ * @LastEditTime: 2020-06-12 17:27:58
+ * @LastEditors: 码上talk|RC
+ * @Description: 
+ * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-portal\src\main\java\cn\codingtalk\tacomallapiportal\interceptor\AuthorizationInterceptor.java
+ * @Just do what I think it is right
+ */
 package cn.codingtalk.tacomallapiportal.interceptor;
 
 import java.util.Map;

@@ -1,3 +1,12 @@
+/***
+ * @Author: 码上talk|RC
+ * @Date: 2020-06-09 23:20:41
+ * @LastEditTime: 2020-06-12 21:30:02
+ * @LastEditors: 码上talk|RC
+ * @Description: 
+ * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-admin\src\main\java\cn\codingtalk\tacomallapiadmin\shiro\MyShiroRealm.java
+ * @Just do what I think it is right
+ */
 package cn.codingtalk.tacomallapiadmin.shiro;
 
 import java.util.List;
@@ -10,25 +19,25 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 
-import cn.codingtalk.tacomallentity.admin.Store;
-import cn.codingtalk.tacomallentity.admin.StorePermission;
-import cn.codingtalk.tacomallmapper.admin.AdminMapper;
+import cn.codingtalk.tacomallentity.admin.AdminUser;
+import cn.codingtalk.tacomallentity.admin.AdminUserAuthRule;
+import cn.codingtalk.tacomallmapper.admin.AdminUserMapper;
 
 public class MyShiroRealm extends AuthorizingRealm {
     @Autowired
-    private AdminMapper storeMapper;
+    private AdminUserMapper adminUserMapper;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principal) {
         System.out.println("权限认证");
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        Store store = (Store) principal.getPrimaryPrincipal();
+        AdminUser adminUser = (AdminUser) principal.getPrimaryPrincipal();
         try {
-            authorizationInfo.addRole(storeMapper.getRole(store.getId()).getName());
+            authorizationInfo.addRole(adminUserMapper.getAuthRole(adminUser.getId()).getName());
 
-            List<StorePermission> permissions = storeMapper.getPermission(store.getId());
-            for (StorePermission permission : permissions) {
-                authorizationInfo.addStringPermission(permission.getName());
+            List<AdminUserAuthRule> adminAuthRules = adminUserMapper.getAuthRule(adminUser.getId());
+            for (AdminUserAuthRule adminAuthRule : adminAuthRules) {
+                authorizationInfo.addStringPermission(adminAuthRule.getName());
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -36,27 +45,24 @@ public class MyShiroRealm extends AuthorizingRealm {
         return authorizationInfo;
     }
 
-    /*主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。*/
+    /* 主要是用来进行身份认证的，也就是说验证用户输入的账号和密码是否正确。 */
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        //获取用户账号和密码
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken)
+            throws AuthenticationException {
+        // 获取用户账号和密码
         System.out.println("用户认证");
         String username = (String) authenticationToken.getPrincipal();
-        Store store = storeMapper
-                .selectOne(new QueryWrapper<Store>()
-                        .lambda()
-                        .eq(Store::getUsername, username));
-        if (store == null) {
+        AdminUser adminUser = adminUserMapper
+                .selectOne(new QueryWrapper<AdminUser>().lambda().eq(AdminUser::getUsername, username));
+        if (adminUser == null) {
             return null;
         }
-        if (store.getStatus() == 1) {
+        if (adminUser.getStatus() == 1) {
             throw new LockedAccountException();
         }
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                store,//安全数据
-                store.getPassword(),//
-                getName()
-        );
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(adminUser, // 安全数据
+                adminUser.getPasswd(), //
+                getName());
         return authenticationInfo;
     }
 }

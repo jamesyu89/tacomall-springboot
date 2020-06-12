@@ -1,13 +1,22 @@
+/***
+ * @Author: 码上talk|RC
+ * @Date: 2020-06-09 23:20:41
+ * @LastEditTime: 2020-06-12 19:38:13
+ * @LastEditors: 码上talk|RC
+ * @Description: 
+ * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-open\src\main\java\cn\codingtalk\tacomallapiopen\controller\OssController.java
+ * @Just do what I think it is right
+ */
 package cn.codingtalk.tacomallapiopen.controller;
+
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import cn.codingtalk.tacomallcommon.utils.RequestUtil;
-import cn.codingtalk.tacomallcommon.utils.ResponseUtil;
 import cn.codingtalk.tacomallcommon.vo.ResponseVo;
 import cn.codingtalk.tacomallapiopen.service.OssService;
 
@@ -19,15 +28,13 @@ public class OssController {
     private OssService ossService;
 
     @PostMapping("authorize")
-    public ResponseVo authorize(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
-        return responseUtil
-                .data(ossService.authorize(jsonRequest.getStr("dir")))
-                .success();
+    public ResponseVo<Map<String, Object>> authorize(@RequestParam(value = "dir", defaultValue = "/") String dir) {
+        return ossService.authorize(dir);
     }
 
     @PostMapping("callback")
-    public ResponseVo callback(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
-        return responseUtil
-                .success();
+    public ResponseVo<Object> callback() {
+        ResponseVo<Object> responseVo = new ResponseVo<>();
+        return responseVo;
     }
 }

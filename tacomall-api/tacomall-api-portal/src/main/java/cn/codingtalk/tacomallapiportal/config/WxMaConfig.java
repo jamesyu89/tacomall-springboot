@@ -1,3 +1,12 @@
+/***
+ * @Author: 码上talk|RC
+ * @Date: 2020-06-11 20:45:33
+ * @LastEditTime: 2020-06-12 19:39:51
+ * @LastEditors: 码上talk|RC
+ * @Description: 
+ * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-portal\src\main\java\cn\codingtalk\tacomallapiportal\config\WxMaConfig.java
+ * @Just do what I think it is right
+ */
 package cn.codingtalk.tacomallapiportal.config;
 
 import javax.annotation.PostConstruct;
@@ -22,7 +31,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-import cn.codingtalk.tacomallapiopen.properties.WxMaProperties;
+import cn.codingtalk.tacomallapiportal.properties.WxMaProperties;
 
 @Configuration
 @EnableConfigurationProperties(WxMaProperties.class)

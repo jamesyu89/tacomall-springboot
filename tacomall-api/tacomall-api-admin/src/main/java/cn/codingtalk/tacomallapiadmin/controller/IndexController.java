@@ -1,30 +1,35 @@
+/***
+ * @Author: 码上talk|RC
+ * @Date: 2020-06-09 23:20:41
+ * @LastEditTime: 2020-06-12 20:57:57
+ * @LastEditors: 码上talk|RC
+ * @Description: 
+ * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-admin\src\main\java\cn\codingtalk\tacomallapiadmin\controller\IndexController.java
+ * @Just do what I think it is right
+ */
 package cn.codingtalk.tacomallapiadmin.controller;
 
-import cn.codingtalk.tacomallapiadmin.service.admin.AdminService;
+import cn.codingtalk.tacomallapiadmin.service.admin.AdminUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import cn.codingtalk.tacomallcommon.utils.RequestUtil;
-import cn.codingtalk.tacomallcommon.utils.ResponseUtil;
 import cn.codingtalk.tacomallcommon.vo.ResponseVo;
-import cn.codingtalk.tacomallapiadmin.annotation.SysLogger;
+import cn.codingtalk.tacomallapiadmin.annotation.LoginLogger;
 
 @RestController
 @RequestMapping(value = "/admin/index/")
 public class IndexController {
 
     @Autowired
-    private AdminService storeService;
+    private AdminUserService adminUserService;
 
-    @SysLogger("用户登录")
+    @LoginLogger("用户登录")
     @PostMapping("login")
-    public ResponseVo login(@RequestBody RequestUtil jsonRequest, ResponseUtil responseUtil) throws Exception {
-        String username = jsonRequest.getStr("username");
-        String password = jsonRequest.getStr("password");
-        storeService.login(username, password);
-        return responseUtil.success();
+    public ResponseVo<String> login(@RequestParam(value = "username") String username,
+                            @RequestParam(value = "passwd") String passwd) {
+        return adminUserService.login(username, passwd);
     }
 }
