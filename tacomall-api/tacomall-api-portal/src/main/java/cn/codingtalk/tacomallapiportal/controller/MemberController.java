@@ -1,14 +1,13 @@
 /***
  * @Author: 码上talk|RC
  * @Date: 2020-06-09 23:20:41
- * @LastEditTime: 2020-06-12 18:30:31
+ * @LastEditTime: 2020-06-13 09:45:34
  * @LastEditors: 码上talk|RC
  * @Description: 
  * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-portal\src\main\java\cn\codingtalk\tacomallapiportal\controller\MemberController.java
  * @Just do what I think it is right
  */
 package cn.codingtalk.tacomallapiportal.controller;
-
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -31,23 +30,34 @@ public class MemberController {
     @Autowired
     private MemberService memberService;
 
+    /***
+     * @description: 微信用户登录
+     * @param {type}
+     * @return:
+     */
     @ApiOperation(value = "小程序用户注册接口", notes = "小程序用户注册接口", httpMethod = "POST")
-    @ApiImplicitParams({
-            @ApiImplicitParam(name = "iv", value = "iv", required = true, paramType = "path"),
+    @ApiImplicitParams({ @ApiImplicitParam(name = "iv", value = "iv", required = true, paramType = "path"),
             @ApiImplicitParam(name = "code", value = "code", required = true, paramType = "path"),
-            @ApiImplicitParam(name = "encryptedData", value = "encryptedData", required = true, paramType = "path")
-    })
+            @ApiImplicitParam(name = "appid", value = "appid", required = true, paramType = "path"),
+            @ApiImplicitParam(name = "rawData", value = "rawData", required = true, paramType = "path"),
+            @ApiImplicitParam(name = "signature", value = "signature", required = true, paramType = "path"),
+            @ApiImplicitParam(name = "encryptedData", value = "encryptedData", required = true, paramType = "path") })
     @IgnoreAuth
     @PostMapping("wxMaLogin")
     public ResponseVo<String> miniAppLogin(@RequestParam(value = "iv") String iv,
-                                    @RequestParam(value = "code") String code,
-                                    @RequestParam(value = "code") String appid,
-                                    @RequestParam(value = "code") String rawData,
-                                    @RequestParam(value = "code") String signature,
-                                    @RequestParam(value = "encryptedData") String encryptedData) {
+            @RequestParam(value = "code") String code,
+            @RequestParam(value = "appid") String appid,
+            @RequestParam(value = "rawData") String rawData,
+            @RequestParam(value = "signature") String signature,
+            @RequestParam(value = "encryptedData") String encryptedData) {
         return memberService.wxMaLogin(iv, code, appid, rawData, signature, encryptedData);
     }
 
+    /***
+     * @description: 获取用户信息
+     * @param {type}
+     * @return:
+     */
     @ApiOperation(value = "用户信息", notes = "用户信息接口", httpMethod = "POST")
     @ApiImplicitParams({})
     @RequireAuth

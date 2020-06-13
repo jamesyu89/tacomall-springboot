@@ -10,15 +10,15 @@
 
     <select id="getMember" resultMap="member">
         select *
-        from member u
+        from member m
         <choose>
             <when test="key=='id'">
-                where u.id = #{value}
+                where m.id = #{value}
             </when>
             <when test="key=='open_id'">
-                left join member_weixin wa
-                on u.id = wa.member_id
-                where wa.open_id = #{value}
+                left join member_weixin_ma mwa
+                on m.id = mwa.member_id
+                where mwa.open_id = #{value}
             </when>
         </choose>
     </select>

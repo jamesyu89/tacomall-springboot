@@ -1,7 +1,7 @@
 /***
  * @Author: 码上talk|RC
  * @Date: 2020-06-09 23:20:41
- * @LastEditTime: 2020-06-12 19:07:59
+ * @LastEditTime: 2020-06-13 09:55:22
  * @LastEditors: 码上talk|RC
  * @Description: 
  * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-portal\src\main\java\cn\codingtalk\tacomallapiportal\service\member\impl\MemberServiceImpl.java
@@ -99,6 +99,7 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
                     memberWeixinMapper.insert(memberWeixin);
 
                     MemberWeixinMa memberWeixinMa = new MemberWeixinMa();
+                    memberWeixinMa.setMemberId(member.getId());
                     memberWeixinMa.setOpenId(userInfo.getOpenId());
                     memberWeixinMaMapper.insert(memberWeixinMa);
 

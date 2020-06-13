@@ -484,7 +484,7 @@
             },
             {
               "name": "avatar",
-              "type": "DefaultString",
+              "type": "ShortString",
               "remark": "微信头像",
               "chnname": ""
             },
