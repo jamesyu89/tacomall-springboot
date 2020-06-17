@@ -127,10 +127,10 @@ git clone https://gitee.com/running-cat/tacomall-springboot.git
 
 5. 导入数据
 
-打开我们的数据库管理工具（navicat for mysql）。
+打开我们的数据库设计工具（pdman）[下载地址](https://gitee.com/robergroup/pdman?_from=gitee_search)。
 
 ```
-创建数据库->tacomall(数据库名)->导入sql脚本（tacomall.sql）
+导入项目（_doc/pdman/tacomall.pdman.json）->配置数据库->运行导入mysql
 ```
 
 6. 修改数据库配置
