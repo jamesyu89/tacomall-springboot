@@ -1,10 +1,10 @@
 /***
  * @Author: 码上talk|RC
  * @Date: 2020-06-09 23:20:41
- * @LastEditTime: 2020-06-13 09:45:34
+ * @LastEditTime: 2020-06-18 20:45:35
  * @LastEditors: 码上talk|RC
  * @Description: 
- * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-portal\src\main\java\cn\codingtalk\tacomallapiportal\controller\MemberController.java
+ * @FilePath: /tacomall-springboot/tacomall-api/tacomall-api-portal/src/main/java/cn/codingtalk/tacomallapiportal/controller/MemberController.java
  * @Just do what I think it is right
  */
 package cn.codingtalk.tacomallapiportal.controller;
@@ -45,11 +45,9 @@ public class MemberController {
     @IgnoreAuth
     @PostMapping("wxMaLogin")
     public ResponseVo<String> miniAppLogin(@RequestParam(value = "iv") String iv,
-            @RequestParam(value = "code") String code,
-            @RequestParam(value = "appid") String appid,
-            @RequestParam(value = "rawData") String rawData,
-            @RequestParam(value = "signature") String signature,
-            @RequestParam(value = "encryptedData") String encryptedData) {
+            @RequestParam(value = "code") String code, @RequestParam(value = "appid") String appid,
+            @RequestParam(value = "rawData") String rawData, @RequestParam(value = "signature") String signature,
+            @RequestParam(value = "encryptedData") String encryptedData) throws Exception {
         return memberService.wxMaLogin(iv, code, appid, rawData, signature, encryptedData);
     }
 

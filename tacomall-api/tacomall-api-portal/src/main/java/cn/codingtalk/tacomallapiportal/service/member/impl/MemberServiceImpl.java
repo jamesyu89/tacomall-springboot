@@ -1,10 +1,10 @@
 /***
  * @Author: 码上talk|RC
  * @Date: 2020-06-09 23:20:41
- * @LastEditTime: 2020-06-16 17:16:21
+ * @LastEditTime: 2020-06-18 20:44:59
  * @LastEditors: 码上talk|RC
  * @Description: 
- * @FilePath: \tacomall-springboot\tacomall-api\tacomall-api-portal\src\main\java\cn\codingtalk\tacomallapiportal\service\member\impl\MemberServiceImpl.java
+ * @FilePath: /tacomall-springboot/tacomall-api/tacomall-api-portal/src/main/java/cn/codingtalk/tacomallapiportal/service/member/impl/MemberServiceImpl.java
  * @Just do what I think it is right
  */
 package cn.codingtalk.tacomallapiportal.service.member.impl;
@@ -25,6 +25,7 @@ import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
+import cn.codingtalk.tacomallcommon.enumeration.BizEnum;
 import cn.codingtalk.tacomallcommon.utils.RequestUtil;
 import cn.codingtalk.tacomallcommon.vo.ResponseVo;
 import cn.codingtalk.tacomallcommon.utils.ObjectUtil;
@@ -58,69 +59,70 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     DataSourceTransactionManager dataSourceTransactionManager;
 
     @Override
-    public ResponseVo<String> wxMaLogin(String iv, String code, String appid, String rawData, String signature, String encryptedData) {
-        ResponseVo<String> responseVo = new ResponseVo<>();
-
+    public ResponseVo<String> wxMaLogin(String iv, String code, String appid, String rawData, String signature,
+            String encryptedData) throws Exception{
         final WxMaService wxService = WxMaConfig.getMaService(appid);
-
+        ResponseVo<String> responseVo = new ResponseVo<>();
+        WxMaJscode2SessionResult session;
         try {
-            WxMaJscode2SessionResult session = wxService.getUserService().getSessionInfo(code);
+            session = wxService.getUserService().getSessionInfo(code);
             this.logger.info(session.getSessionKey());
             this.logger.info(session.getOpenid());
             if (!wxService.getUserService().checkUserInfo(session.getSessionKey(), rawData, signature)) {
-                responseVo.setOk(400);
+                responseVo.setStatus(false);
+                responseVo.setCode(BizEnum.FALSE.getCode());
                 responseVo.setMessage("user check failed");
                 return responseVo;
             }
-            WxMaUserInfo userInfo = wxService.getUserService().getUserInfo(session.getSessionKey(), encryptedData, iv);
-
-            Member member = baseMapper.getMember("open_id", session.getOpenid());
-
-            if (ObjectUtil.isNull(member)) {
-                TransactionStatus transactionStatus = dataSourceTransactionManager
-                        .getTransaction(transactionDefinition);
-                try {
-
-                    member = new Member();
-                    member.setNickname(userInfo.getNickName());
-                    member.setAvatar(userInfo.getAvatarUrl());
-                    baseMapper.insert(member);
-
-                    MemberWeixin memberWeixin = new MemberWeixin();
-                    memberWeixin.setMemberId(member.getId());
-                    memberWeixin.setUnionId(userInfo.getUnionId());
-                    memberWeixin.setNickname(userInfo.getNickName());
-                    memberWeixin.setAvatar(userInfo.getAvatarUrl());
-                    memberWeixinMapper.insert(memberWeixin);
-
-                    MemberWeixinMa memberWeixinMa = new MemberWeixinMa();
-                    memberWeixinMa.setMemberId(member.getId());
-                    memberWeixinMa.setOpenId(userInfo.getOpenId());
-                    memberWeixinMaMapper.insert(memberWeixinMa);
-
-                    dataSourceTransactionManager.commit(transactionStatus);
-                } catch (Exception e) {
-                    dataSourceTransactionManager.rollback(transactionStatus);
-                    ExceptionUtil.throwSqlException("sql错误");
-                }
-            }
-
-            String token = "";
-            try {
-                Map<String, String> claims = new HashMap<>(1);
-                claims.put("id", IntUtil.toString(member.getId()));
-                token = JwtUtil.create(claims);
-            } catch (Exception e) {
-                ExceptionUtil.throwBizException("token生成失败");
-            }
-            responseVo.setData(token);
-            return responseVo;
         } catch (WxErrorException e) {
             this.logger.error(e.getMessage(), e);
-            responseVo.setOk(400);
+            responseVo.setStatus(false);
+            responseVo.setCode(BizEnum.FALSE.getCode());
             responseVo.setMessage(e.toString());
             return responseVo;
         }
+
+        WxMaUserInfo userInfo = wxService.getUserService().getUserInfo(session.getSessionKey(), encryptedData, iv);
+        Member member = baseMapper.getMember("open_id", session.getOpenid());
+        String token = "";
+
+        if (ObjectUtil.isNull(member)) {
+            TransactionStatus transactionStatus = dataSourceTransactionManager.getTransaction(transactionDefinition);
+            try {
+
+                member = new Member();
+                member.setNickname(userInfo.getNickName());
+                member.setAvatar(userInfo.getAvatarUrl());
+                baseMapper.insert(member);
+
+                MemberWeixin memberWeixin = new MemberWeixin();
+                memberWeixin.setMemberId(member.getId());
+                memberWeixin.setUnionId(userInfo.getUnionId());
+                memberWeixin.setNickname(userInfo.getNickName());
+                memberWeixin.setAvatar(userInfo.getAvatarUrl());
+                memberWeixinMapper.insert(memberWeixin);
+
+                MemberWeixinMa memberWeixinMa = new MemberWeixinMa();
+                memberWeixinMa.setMemberId(member.getId());
+                memberWeixinMa.setOpenId(userInfo.getOpenId());
+                memberWeixinMaMapper.insert(memberWeixinMa);
+
+                dataSourceTransactionManager.commit(transactionStatus);
+            } catch (Exception e) {
+                dataSourceTransactionManager.rollback(transactionStatus);
+                ExceptionUtil.throwSqlException("sql错误");
+            }
+        }
+
+        try {
+            Map<String, String> claims = new HashMap<>(1);
+            claims.put("id", IntUtil.toString(member.getId()));
+            token = JwtUtil.create(claims);
+        } catch (Exception e) {
+            ExceptionUtil.throwBizException("token生成失败");
+        }
+        responseVo.setData(token);
+        return responseVo;
 
     }
 

@@ -1,41 +1,27 @@
+/***
+ * @Author: 码上talk|RC
+ * @Date: 2020-06-09 23:20:41
+ * @LastEditTime: 2020-06-18 20:26:46
+ * @LastEditors: 码上talk|RC
+ * @Description: 
+ * @FilePath: /tacomall-springboot/tacomall-common/src/main/java/cn/codingtalk/tacomallcommon/vo/ResponseVo.java
+ * @Just do what I think it is right
+ */
 package cn.codingtalk.tacomallcommon.vo;
 
+import lombok.Data;
+
+import cn.codingtalk.tacomallcommon.enumeration.BizEnum;
+
+@Data
 public class ResponseVo<T> {
-    private Integer ok = 1;
-    private Integer code = 1000;
-    private String message;
+
+    private Boolean status = true;
+
+    private Integer code = BizEnum.OK.getCode();
+
+    private String message = BizEnum.OK.getMessage();
+
     private T data;
-
-    public Integer getOk() {
-        return ok;
-    }
-
-    public void setOk(Integer ok) {
-        this.ok = ok;
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
 
 }
