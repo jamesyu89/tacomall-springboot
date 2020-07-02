@@ -53,7 +53,7 @@
         <joda.time.version>2.9.9</joda.time.version>
         <springfox.swagger2.version>2.9.2</springfox.swagger2.version>
         <springfox.swagger.ui.version>2.9.2</springfox.swagger.ui.version>
-        <mysql.version>8.0.13</mysql.version>
+        <mysql.version>8.0.16</mysql.version>
         <baomidou.dynamicdatasource.version>2.5.6</baomidou.dynamicdatasource.version>
         <binarywang.weixinjavaminiapp.version>3.6.0</binarywang.weixinjavaminiapp.version>
         <aliyun.oss.version>2.4.0</aliyun.oss.version>
